@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vulnerable-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
+    targetRevision: main
+    path: manifests/vulnerable-app        # ← nouveau chemin
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: demo-vulnerable
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
+    syncOptions: [ CreateNamespace=true ]
