@@ -1,0 +1,4869 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "07c7f69a-5a4b-4f2c-8b55-b7c66df5bfa1",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "argocd-redis-798565fd74-kz9n5",
+                        "uid": "07c7f69a-5a4b-4f2c-8b55-b7c66df5bfa1"
+                    }
+                ],
+                "resourceVersion": "145878471",
+                "uid": "e9c7e743-97db-4165-b127-d58c18ade424"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "argocd-redis-798565fd74-kz9n5",
+                "namespace": "argocd",
+                "uid": "07c7f69a-5a4b-4f2c-8b55-b7c66df5bfa1"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "1b623089-d0f0-4864-98ab-a5232c0aa3d9",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "argocd-server-7c8986577c-hhjjg",
+                        "uid": "1b623089-d0f0-4864-98ab-a5232c0aa3d9"
+                    }
+                ],
+                "resourceVersion": "145878482",
+                "uid": "a0223f1f-dcbc-4580-9357-9ff914bfca16"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "argocd-server-7c8986577c-hhjjg",
+                "namespace": "argocd",
+                "uid": "1b623089-d0f0-4864-98ab-a5232c0aa3d9"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "2f09b4f9-fb5b-4fa5-a8c6-f999a9027ae3",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "argocd-notifications-controller",
+                        "uid": "2f09b4f9-fb5b-4fa5-a8c6-f999a9027ae3"
+                    }
+                ],
+                "resourceVersion": "145878391",
+                "uid": "436bf19b-04bb-4cd9-a00f-2af2a4f068df"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "argocd-notifications-controller",
+                "namespace": "argocd",
+                "uid": "2f09b4f9-fb5b-4fa5-a8c6-f999a9027ae3"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "32599e4f-2c95-47d4-9dcf-7ecb2ac7b9ca",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "argocd-server",
+                        "uid": "32599e4f-2c95-47d4-9dcf-7ecb2ac7b9ca"
+                    }
+                ],
+                "resourceVersion": "145878367",
+                "uid": "43b02f07-b8d3-4013-ba8a-65682fce8903"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "argocd-server",
+                "namespace": "argocd",
+                "uid": "32599e4f-2c95-47d4-9dcf-7ecb2ac7b9ca"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "349517fc-bfd4-49ce-b390-bba2e7be836e",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "argocd-repo-server",
+                        "uid": "349517fc-bfd4-49ce-b390-bba2e7be836e"
+                    }
+                ],
+                "resourceVersion": "145878385",
+                "uid": "efbf2f55-595f-4703-8fab-d0c2622db952"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "argocd-repo-server",
+                "namespace": "argocd",
+                "uid": "349517fc-bfd4-49ce-b390-bba2e7be836e"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "3b5ebf5a-3884-4b13-a2f4-83d89c15945f",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "StatefulSet",
+                        "name": "argocd-application-controller",
+                        "uid": "3b5ebf5a-3884-4b13-a2f4-83d89c15945f"
+                    }
+                ],
+                "resourceVersion": "145878637",
+                "uid": "5c5dac13-c689-4afa-9c7f-2b8db6c41e3d"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "StatefulSet",
+                "name": "argocd-application-controller",
+                "namespace": "argocd",
+                "uid": "3b5ebf5a-3884-4b13-a2f4-83d89c15945f"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "528db5a4-2af8-493a-a99a-82f06d5f3fea",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "argocd-server-7c8986577c",
+                        "uid": "528db5a4-2af8-493a-a99a-82f06d5f3fea"
+                    }
+                ],
+                "resourceVersion": "145878590",
+                "uid": "fa6b228a-7bbe-4cb5-a3a1-e35d530424b4"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "argocd-server-7c8986577c",
+                "namespace": "argocd",
+                "uid": "528db5a4-2af8-493a-a99a-82f06d5f3fea"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "59959a42-f024-4fb9-944a-993ed4ac1a54",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "argocd-applicationset-controller-77497b89df",
+                        "uid": "59959a42-f024-4fb9-944a-993ed4ac1a54"
+                    }
+                ],
+                "resourceVersion": "145878582",
+                "uid": "344d31dc-e078-4451-90e1-b0dc7939b4e7"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "argocd-applicationset-controller-77497b89df",
+                "namespace": "argocd",
+                "uid": "59959a42-f024-4fb9-944a-993ed4ac1a54"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:39Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "5f26183d-2ecd-4c32-a52e-e83da6310c70",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "argocd-dex-server-7c874c5958-xpxq8",
+                        "uid": "5f26183d-2ecd-4c32-a52e-e83da6310c70"
+                    }
+                ],
+                "resourceVersion": "145878507",
+                "uid": "9a6cee20-f58c-4ddd-b2bb-8f0ee76a8699"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "argocd-dex-server-7c874c5958-xpxq8",
+                "namespace": "argocd",
+                "uid": "5f26183d-2ecd-4c32-a52e-e83da6310c70"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "6982d5c9-a682-457b-a76e-c75c0e4e1da5",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "argocd-applicationset-controller",
+                        "uid": "6982d5c9-a682-457b-a76e-c75c0e4e1da5"
+                    }
+                ],
+                "resourceVersion": "145878384",
+                "uid": "dfd1440a-fc5d-4238-b646-d703981c31a5"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "argocd-applicationset-controller",
+                "namespace": "argocd",
+                "uid": "6982d5c9-a682-457b-a76e-c75c0e4e1da5"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "77857ab0-d8fe-4aa3-9d5f-861195143c6b",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "argocd-redis",
+                        "uid": "77857ab0-d8fe-4aa3-9d5f-861195143c6b"
+                    }
+                ],
+                "resourceVersion": "145878420",
+                "uid": "02bfe90c-84e5-4e7f-b991-eb472a4c8953"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "argocd-redis",
+                "namespace": "argocd",
+                "uid": "77857ab0-d8fe-4aa3-9d5f-861195143c6b"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "79ffc9ad-2928-49df-ba1a-2964155c3c1b",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "argocd-repo-server-59d57b7dcc-bz7mv",
+                        "uid": "79ffc9ad-2928-49df-ba1a-2964155c3c1b"
+                    }
+                ],
+                "resourceVersion": "145878487",
+                "uid": "df2dcdba-6a2d-4586-90b9-8160ca51930d"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "argocd-repo-server-59d57b7dcc-bz7mv",
+                "namespace": "argocd",
+                "uid": "79ffc9ad-2928-49df-ba1a-2964155c3c1b"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "7d60eeba-6431-4790-b53c-1f61e8a7a0cd",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "argocd-application-controller-0",
+                        "uid": "7d60eeba-6431-4790-b53c-1f61e8a7a0cd"
+                    }
+                ],
+                "resourceVersion": "145878486",
+                "uid": "16a275f1-b1ab-4f1c-be82-7a513e0b0184"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "argocd-application-controller-0",
+                "namespace": "argocd",
+                "uid": "7d60eeba-6431-4790-b53c-1f61e8a7a0cd"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "8271caab-2c29-4295-ae4c-b795944a6bf6",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "argocd-dex-server-7c874c5958",
+                        "uid": "8271caab-2c29-4295-ae4c-b795944a6bf6"
+                    }
+                ],
+                "resourceVersion": "145878597",
+                "uid": "4d8373af-7815-49e2-8407-88e00e2dd727"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "argocd-dex-server-7c874c5958",
+                "namespace": "argocd",
+                "uid": "8271caab-2c29-4295-ae4c-b795944a6bf6"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "9f9b441b-398d-455b-ac22-161573d3b3a9",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "argocd-notifications-controller-6c5f7c5dcc",
+                        "uid": "9f9b441b-398d-455b-ac22-161573d3b3a9"
+                    }
+                ],
+                "resourceVersion": "145878581",
+                "uid": "fcf6c3b7-7a3e-409e-9ab4-1c5cb5b06b11"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "argocd-notifications-controller-6c5f7c5dcc",
+                "namespace": "argocd",
+                "uid": "9f9b441b-398d-455b-ac22-161573d3b3a9"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "b0391a07-7f21-4693-8695-5d345fef8a0c",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "argocd-notifications-controller-6c5f7c5dcc-v7xtw",
+                        "uid": "b0391a07-7f21-4693-8695-5d345fef8a0c"
+                    }
+                ],
+                "resourceVersion": "145878428",
+                "uid": "ca52a555-4148-4332-9932-81ca1fff7700"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "argocd-notifications-controller-6c5f7c5dcc-v7xtw",
+                "namespace": "argocd",
+                "uid": "b0391a07-7f21-4693-8695-5d345fef8a0c"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "bcb6887a-538a-4579-ae42-a5022497a972",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "argocd-redis-798565fd74",
+                        "uid": "bcb6887a-538a-4579-ae42-a5022497a972"
+                    }
+                ],
+                "resourceVersion": "145878557",
+                "uid": "6ca0843f-9779-4ead-a4bf-d5d88cc123c8"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "argocd-redis-798565fd74",
+                "namespace": "argocd",
+                "uid": "bcb6887a-538a-4579-ae42-a5022497a972"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "c549ce21-91bd-42b4-aeda-395f01a144c3",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "argocd-dex-server",
+                        "uid": "c549ce21-91bd-42b4-aeda-395f01a144c3"
+                    }
+                ],
+                "resourceVersion": "145878417",
+                "uid": "6f5e3b40-ee5b-455c-8831-5679c33f809b"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "argocd-dex-server",
+                "namespace": "argocd",
+                "uid": "c549ce21-91bd-42b4-aeda-395f01a144c3"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "c5741630-46e4-4144-ba76-3d8155ac9148",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "argocd-applicationset-controller-77497b89df-w9vfl",
+                        "uid": "c5741630-46e4-4144-ba76-3d8155ac9148"
+                    }
+                ],
+                "resourceVersion": "145878469",
+                "uid": "60d4aaad-15b6-498f-82e6-b0254d74e4f2"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "argocd-applicationset-controller-77497b89df-w9vfl",
+                "namespace": "argocd",
+                "uid": "c5741630-46e4-4144-ba76-3d8155ac9148"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "cff9b3ff-4e92-4e4a-8421-7ec4fe903f19",
+                "namespace": "argocd",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "argocd-repo-server-59d57b7dcc",
+                        "uid": "cff9b3ff-4e92-4e4a-8421-7ec4fe903f19"
+                    }
+                ],
+                "resourceVersion": "145878570",
+                "uid": "af0091f7-ada3-4cbd-a2d4-87b9aa3858a8"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "argocd-repo-server-59d57b7dcc",
+                "namespace": "argocd",
+                "uid": "cff9b3ff-4e92-4e4a-8421-7ec4fe903f19"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "239c1143-a766-410d-a3d1-bcdd9dc8e841",
+                "namespace": "demo-vulnerable",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "vulnerable-nginx",
+                        "uid": "239c1143-a766-410d-a3d1-bcdd9dc8e841"
+                    }
+                ],
+                "resourceVersion": "145878398",
+                "uid": "befb8cb6-3113-4919-8f64-cf41ee8527c8"
+            },
+            "results": [
+                {
+                    "message": "validation error: Les containers privilégiés sont interdits. rule autogen-disallow-privileged failed at path /spec/template/spec/containers/0/securityContext/privileged/",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "fail",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "vulnerable-nginx",
+                "namespace": "demo-vulnerable",
+                "uid": "239c1143-a766-410d-a3d1-bcdd9dc8e841"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 1,
+                "pass": 0,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:39Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "89f33de1-8423-4a07-8575-de18545af5da",
+                "namespace": "demo-vulnerable",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "vulnerable-nginx-7bf8567dcf-zvm9m",
+                        "uid": "89f33de1-8423-4a07-8575-de18545af5da"
+                    }
+                ],
+                "resourceVersion": "145878523",
+                "uid": "58d3975f-7858-47ea-a9f8-63b55dde93d7"
+            },
+            "results": [
+                {
+                    "message": "validation error: Les containers privilégiés sont interdits. rule disallow-privileged failed at path /spec/containers/0/securityContext/privileged/",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "fail",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "vulnerable-nginx-7bf8567dcf-zvm9m",
+                "namespace": "demo-vulnerable",
+                "uid": "89f33de1-8423-4a07-8575-de18545af5da"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 1,
+                "pass": 0,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "b514a914-f459-4a20-a23b-fbb67eb6bd59",
+                "namespace": "demo-vulnerable",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "vulnerable-nginx-7bf8567dcf",
+                        "uid": "b514a914-f459-4a20-a23b-fbb67eb6bd59"
+                    }
+                ],
+                "resourceVersion": "145878616",
+                "uid": "70f75bf3-a6b6-42fc-baf5-13833f23ebdd"
+            },
+            "results": [
+                {
+                    "message": "validation error: Les containers privilégiés sont interdits. rule autogen-disallow-privileged failed at path /spec/template/spec/containers/0/securityContext/privileged/",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "fail",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "vulnerable-nginx-7bf8567dcf",
+                "namespace": "demo-vulnerable",
+                "uid": "b514a914-f459-4a20-a23b-fbb67eb6bd59"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 1,
+                "pass": 0,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:39Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "0707500b-b64b-4555-83e1-d3b215665080",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "ovhcloud-apiserver-proxy-j7hp9",
+                        "uid": "0707500b-b64b-4555-83e1-d3b215665080"
+                    }
+                ],
+                "resourceVersion": "145878519",
+                "uid": "a39f588c-142c-4bb2-88af-6baae8d3ffdb"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "ovhcloud-apiserver-proxy-j7hp9",
+                "namespace": "kube-system",
+                "uid": "0707500b-b64b-4555-83e1-d3b215665080"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "0c53daaa-38ce-414b-8cc7-8bb7d1fbc974",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "DaemonSet",
+                        "name": "canal",
+                        "uid": "0c53daaa-38ce-414b-8cc7-8bb7d1fbc974"
+                    }
+                ],
+                "resourceVersion": "145878355",
+                "uid": "ae787dbd-af5f-4807-a01a-8f9bc32f8c89"
+            },
+            "results": [
+                {
+                    "message": "validation error: Les containers privilégiés sont interdits. rule autogen-disallow-privileged failed at path /spec/template/spec/containers/0/securityContext/privileged/",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "fail",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "DaemonSet",
+                "name": "canal",
+                "namespace": "kube-system",
+                "uid": "0c53daaa-38ce-414b-8cc7-8bb7d1fbc974"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 1,
+                "pass": 0,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "0d0260c7-cbed-4530-a845-da8c01e38cac",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "ovhcloud-konnectivity-agent-5c5f794df6",
+                        "uid": "0d0260c7-cbed-4530-a845-da8c01e38cac"
+                    }
+                ],
+                "resourceVersion": "145878615",
+                "uid": "f383b17c-26dd-4198-a10d-72621e03b3d3"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "ovhcloud-konnectivity-agent-5c5f794df6",
+                "namespace": "kube-system",
+                "uid": "0d0260c7-cbed-4530-a845-da8c01e38cac"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "105d1412-d667-4994-a2d3-a8973aeb8c70",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "DaemonSet",
+                        "name": "ovhcloud-apiserver-proxy",
+                        "uid": "105d1412-d667-4994-a2d3-a8973aeb8c70"
+                    }
+                ],
+                "resourceVersion": "145878361",
+                "uid": "5be67e7a-cf1d-4036-888f-6764b1afc38e"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "DaemonSet",
+                "name": "ovhcloud-apiserver-proxy",
+                "namespace": "kube-system",
+                "uid": "105d1412-d667-4994-a2d3-a8973aeb8c70"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:39Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "13cb52ea-22e3-4839-a390-fe38d6cd0076",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "canal-wmdfg",
+                        "uid": "13cb52ea-22e3-4839-a390-fe38d6cd0076"
+                    }
+                ],
+                "resourceVersion": "145878528",
+                "uid": "19950fdb-ffa4-4335-8def-90317b5543cf"
+            },
+            "results": [
+                {
+                    "message": "validation error: Les containers privilégiés sont interdits. rule disallow-privileged failed at path /spec/containers/0/securityContext/privileged/",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "fail",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "canal-wmdfg",
+                "namespace": "kube-system",
+                "uid": "13cb52ea-22e3-4839-a390-fe38d6cd0076"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 1,
+                "pass": 0,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "158c53e8-3b5b-4815-bfdc-705fc2bcd1f8",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "calico-kube-controllers-789b54ff5f",
+                        "uid": "158c53e8-3b5b-4815-bfdc-705fc2bcd1f8"
+                    }
+                ],
+                "resourceVersion": "145878572",
+                "uid": "b7c63970-0c24-4410-b67a-4a836c361a81"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "calico-kube-controllers-789b54ff5f",
+                "namespace": "kube-system",
+                "uid": "158c53e8-3b5b-4815-bfdc-705fc2bcd1f8"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "15b19943-266f-45f6-8be2-a66e90500fc6",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "ovhcloud-konnectivity-agent-5c5f794df6-gzgff",
+                        "uid": "15b19943-266f-45f6-8be2-a66e90500fc6"
+                    }
+                ],
+                "resourceVersion": "145878488",
+                "uid": "26c11f77-80d2-429b-8df9-017813f1b952"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "ovhcloud-konnectivity-agent-5c5f794df6-gzgff",
+                "namespace": "kube-system",
+                "uid": "15b19943-266f-45f6-8be2-a66e90500fc6"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "1b8d33c7-051b-4bad-b024-fefc175fca91",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "canal-24m2g",
+                        "uid": "1b8d33c7-051b-4bad-b024-fefc175fca91"
+                    }
+                ],
+                "resourceVersion": "145878491",
+                "uid": "3e5ea009-f43b-4b9a-b3ef-a4f990eeb064"
+            },
+            "results": [
+                {
+                    "message": "validation error: Les containers privilégiés sont interdits. rule disallow-privileged failed at path /spec/containers/0/securityContext/privileged/",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "fail",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "canal-24m2g",
+                "namespace": "kube-system",
+                "uid": "1b8d33c7-051b-4bad-b024-fefc175fca91"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 1,
+                "pass": 0,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:39Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "3891a869-0910-4880-89f3-1e8a3ed7090e",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "canal-2f7ct",
+                        "uid": "3891a869-0910-4880-89f3-1e8a3ed7090e"
+                    }
+                ],
+                "resourceVersion": "145878514",
+                "uid": "28e39a75-54c2-44da-a10d-6ed8b0892f61"
+            },
+            "results": [
+                {
+                    "message": "validation error: Les containers privilégiés sont interdits. rule disallow-privileged failed at path /spec/containers/0/securityContext/privileged/",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "fail",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "canal-2f7ct",
+                "namespace": "kube-system",
+                "uid": "3891a869-0910-4880-89f3-1e8a3ed7090e"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 1,
+                "pass": 0,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "38a8de51-1ba3-4bf4-849b-3205ca9b4777",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "metrics-server",
+                        "uid": "38a8de51-1ba3-4bf4-849b-3205ca9b4777"
+                    }
+                ],
+                "resourceVersion": "145878409",
+                "uid": "1193da5c-9d9b-4ae8-9769-11669b0ce2e8"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "metrics-server",
+                "namespace": "kube-system",
+                "uid": "38a8de51-1ba3-4bf4-849b-3205ca9b4777"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:39Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "4a404e7e-b948-4595-b825-dc5e017bc14d",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "kube-proxy-9xnzm",
+                        "uid": "4a404e7e-b948-4595-b825-dc5e017bc14d"
+                    }
+                ],
+                "resourceVersion": "145878542",
+                "uid": "97be9f06-f35f-4a05-9231-fab5e33c8dfe"
+            },
+            "results": [
+                {
+                    "message": "validation error: Les containers privilégiés sont interdits. rule disallow-privileged failed at path /spec/containers/0/securityContext/privileged/",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "fail",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "kube-proxy-9xnzm",
+                "namespace": "kube-system",
+                "uid": "4a404e7e-b948-4595-b825-dc5e017bc14d"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 1,
+                "pass": 0,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "52d73a8f-2e80-4f41-9ee5-6f95af521b65",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "calico-kube-controllers-789b54ff5f-8m8hb",
+                        "uid": "52d73a8f-2e80-4f41-9ee5-6f95af521b65"
+                    }
+                ],
+                "resourceVersion": "145878468",
+                "uid": "c922c4c5-c591-461e-8e40-b7139c9d5801"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "calico-kube-controllers-789b54ff5f-8m8hb",
+                "namespace": "kube-system",
+                "uid": "52d73a8f-2e80-4f41-9ee5-6f95af521b65"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "53facdff-f2e7-4a9c-96fe-17e0428f0b29",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "kube-dns-autoscaler",
+                        "uid": "53facdff-f2e7-4a9c-96fe-17e0428f0b29"
+                    }
+                ],
+                "resourceVersion": "145878421",
+                "uid": "d63a0f92-e677-4005-a96b-8e2b37663b0a"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "kube-dns-autoscaler",
+                "namespace": "kube-system",
+                "uid": "53facdff-f2e7-4a9c-96fe-17e0428f0b29"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "5d0251c6-ffbc-411f-aadc-40565128d7a9",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "ovhcloud-konnectivity-agent-5c5f794df6-j9qzk",
+                        "uid": "5d0251c6-ffbc-411f-aadc-40565128d7a9"
+                    }
+                ],
+                "resourceVersion": "145878503",
+                "uid": "548b688c-f879-455f-9ad5-6167fcf0b1c8"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "ovhcloud-konnectivity-agent-5c5f794df6-j9qzk",
+                "namespace": "kube-system",
+                "uid": "5d0251c6-ffbc-411f-aadc-40565128d7a9"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "5e934d7a-1564-44f1-8ee0-705787c0e1e3",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "kube-dns-autoscaler-579484969c-qrn72",
+                        "uid": "5e934d7a-1564-44f1-8ee0-705787c0e1e3"
+                    }
+                ],
+                "resourceVersion": "145878489",
+                "uid": "f47d314e-6326-461f-ba55-e066d8aedbea"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "kube-dns-autoscaler-579484969c-qrn72",
+                "namespace": "kube-system",
+                "uid": "5e934d7a-1564-44f1-8ee0-705787c0e1e3"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "639d0fae-1a84-4d58-9025-40d74bceaff6",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "coredns-7db787fd9d",
+                        "uid": "639d0fae-1a84-4d58-9025-40d74bceaff6"
+                    }
+                ],
+                "resourceVersion": "145878613",
+                "uid": "f10fc51e-055f-4f53-9d7a-87e1db3a6e24"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "coredns-7db787fd9d",
+                "namespace": "kube-system",
+                "uid": "639d0fae-1a84-4d58-9025-40d74bceaff6"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:39Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "6b308c5e-a4b1-4589-8a3f-04b3eacfc334",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "kube-proxy-wms2p",
+                        "uid": "6b308c5e-a4b1-4589-8a3f-04b3eacfc334"
+                    }
+                ],
+                "resourceVersion": "145878551",
+                "uid": "771a36e5-ecad-4ef3-9fa1-46cc32ad69c0"
+            },
+            "results": [
+                {
+                    "message": "validation error: Les containers privilégiés sont interdits. rule disallow-privileged failed at path /spec/containers/0/securityContext/privileged/",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "fail",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "kube-proxy-wms2p",
+                "namespace": "kube-system",
+                "uid": "6b308c5e-a4b1-4589-8a3f-04b3eacfc334"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 1,
+                "pass": 0,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "70b584d3-67c0-4211-a91e-6d58983d3cb2",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "coredns",
+                        "uid": "70b584d3-67c0-4211-a91e-6d58983d3cb2"
+                    }
+                ],
+                "resourceVersion": "145878419",
+                "uid": "4b83ca25-0ebb-409d-938d-6f389956b794"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "coredns",
+                "namespace": "kube-system",
+                "uid": "70b584d3-67c0-4211-a91e-6d58983d3cb2"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "8a1610c4-4783-4377-83be-c94fda8d87f9",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "ovhcloud-konnectivity-agent",
+                        "uid": "8a1610c4-4783-4377-83be-c94fda8d87f9"
+                    }
+                ],
+                "resourceVersion": "145878372",
+                "uid": "241a53a8-0de7-42e8-81f5-22be4810e9d6"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "ovhcloud-konnectivity-agent",
+                "namespace": "kube-system",
+                "uid": "8a1610c4-4783-4377-83be-c94fda8d87f9"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "8e880c78-4a7c-4e0f-ad85-44cbc3ffe3df",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "ovhcloud-apiserver-proxy-92kjw",
+                        "uid": "8e880c78-4a7c-4e0f-ad85-44cbc3ffe3df"
+                    }
+                ],
+                "resourceVersion": "145878466",
+                "uid": "b7269b88-0c4a-47fe-a4cb-52c9dd74ebdd"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "ovhcloud-apiserver-proxy-92kjw",
+                "namespace": "kube-system",
+                "uid": "8e880c78-4a7c-4e0f-ad85-44cbc3ffe3df"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "9233939b-446b-4644-8600-29f7491f9702",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "calico-kube-controllers",
+                        "uid": "9233939b-446b-4644-8600-29f7491f9702"
+                    }
+                ],
+                "resourceVersion": "145878368",
+                "uid": "e1d796fb-2693-4323-a574-d967330d655a"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "calico-kube-controllers",
+                "namespace": "kube-system",
+                "uid": "9233939b-446b-4644-8600-29f7491f9702"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "c671ba4c-1f98-48f7-849d-8a144e9f00d1",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "DaemonSet",
+                        "name": "kube-proxy",
+                        "uid": "c671ba4c-1f98-48f7-849d-8a144e9f00d1"
+                    }
+                ],
+                "resourceVersion": "145878356",
+                "uid": "79014fb7-6f0c-4dc6-ac0b-fb95c5ffd244"
+            },
+            "results": [
+                {
+                    "message": "validation error: Les containers privilégiés sont interdits. rule autogen-disallow-privileged failed at path /spec/template/spec/containers/0/securityContext/privileged/",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "fail",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "DaemonSet",
+                "name": "kube-proxy",
+                "namespace": "kube-system",
+                "uid": "c671ba4c-1f98-48f7-849d-8a144e9f00d1"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 1,
+                "pass": 0,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "d2cff637-b32d-40bb-8984-6033ff14012a",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "coredns-7db787fd9d-t2nm2",
+                        "uid": "d2cff637-b32d-40bb-8984-6033ff14012a"
+                    }
+                ],
+                "resourceVersion": "145878438",
+                "uid": "ca05f29e-539d-4882-b939-8f26faafad6f"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "coredns-7db787fd9d-t2nm2",
+                "namespace": "kube-system",
+                "uid": "d2cff637-b32d-40bb-8984-6033ff14012a"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:39Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "d3cb072a-9239-4d08-a953-91405c8e81ac",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "coredns-7db787fd9d-9ctzg",
+                        "uid": "d3cb072a-9239-4d08-a953-91405c8e81ac"
+                    }
+                ],
+                "resourceVersion": "145878543",
+                "uid": "5c58b1bb-ad0b-457a-980e-e716b2c7f7ba"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "coredns-7db787fd9d-9ctzg",
+                "namespace": "kube-system",
+                "uid": "d3cb072a-9239-4d08-a953-91405c8e81ac"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "dd5b4e0f-0c00-47bb-ac9e-2326a6eb4b82",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "metrics-server-5b859c9bb8-xt78b",
+                        "uid": "dd5b4e0f-0c00-47bb-ac9e-2326a6eb4b82"
+                    }
+                ],
+                "resourceVersion": "145878554",
+                "uid": "cc0f2eb8-7d93-40b8-b68e-6b69b7d2b42b"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "metrics-server-5b859c9bb8-xt78b",
+                "namespace": "kube-system",
+                "uid": "dd5b4e0f-0c00-47bb-ac9e-2326a6eb4b82"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "ebe0c52f-13e6-4106-a4e6-7a99730a6cbe",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "metrics-server-5b859c9bb8",
+                        "uid": "ebe0c52f-13e6-4106-a4e6-7a99730a6cbe"
+                    }
+                ],
+                "resourceVersion": "145878601",
+                "uid": "648e5e14-9a77-459b-ad90-b601409988b3"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "metrics-server-5b859c9bb8",
+                "namespace": "kube-system",
+                "uid": "ebe0c52f-13e6-4106-a4e6-7a99730a6cbe"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:39Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "fa20f006-8cac-4a4e-a210-8edfb68af5b8",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "kube-proxy-r79lk",
+                        "uid": "fa20f006-8cac-4a4e-a210-8edfb68af5b8"
+                    }
+                ],
+                "resourceVersion": "145878555",
+                "uid": "dc8d1619-e632-4e4a-9e3e-d9912cf33607"
+            },
+            "results": [
+                {
+                    "message": "validation error: Les containers privilégiés sont interdits. rule disallow-privileged failed at path /spec/containers/0/securityContext/privileged/",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "fail",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "kube-proxy-r79lk",
+                "namespace": "kube-system",
+                "uid": "fa20f006-8cac-4a4e-a210-8edfb68af5b8"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 1,
+                "pass": 0,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "fbe171e2-4c01-4be3-9917-64b52d9b5c1c",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "kube-dns-autoscaler-579484969c",
+                        "uid": "fbe171e2-4c01-4be3-9917-64b52d9b5c1c"
+                    }
+                ],
+                "resourceVersion": "145878580",
+                "uid": "73d3aa66-d719-4f1b-aab2-31bb4acca4dc"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "kube-dns-autoscaler-579484969c",
+                "namespace": "kube-system",
+                "uid": "fbe171e2-4c01-4be3-9917-64b52d9b5c1c"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:39Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "ff88d31f-9dec-4e66-8bd0-f575273761ca",
+                "namespace": "kube-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "ovhcloud-apiserver-proxy-m4877",
+                        "uid": "ff88d31f-9dec-4e66-8bd0-f575273761ca"
+                    }
+                ],
+                "resourceVersion": "145878544",
+                "uid": "070f3806-57e5-4bb3-8cdf-edf97b544f42"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "ovhcloud-apiserver-proxy-m4877",
+                "namespace": "kube-system",
+                "uid": "ff88d31f-9dec-4e66-8bd0-f575273761ca"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "1ac81f8b-3343-463e-b5eb-3e0e2ed5ca79",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "kyverno-admission-controller",
+                        "uid": "1ac81f8b-3343-463e-b5eb-3e0e2ed5ca79"
+                    }
+                ],
+                "resourceVersion": "145878373",
+                "uid": "940a39b0-ad9a-4039-9e5e-88c8127d5ca5"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "kyverno-admission-controller",
+                "namespace": "kyverno",
+                "uid": "1ac81f8b-3343-463e-b5eb-3e0e2ed5ca79"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "1ee5985b-d52f-4f5a-8bce-074b6f97611f",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "kyverno-reports-controller-f544fb46d-sn4zb",
+                        "uid": "1ee5985b-d52f-4f5a-8bce-074b6f97611f"
+                    }
+                ],
+                "resourceVersion": "145878447",
+                "uid": "75997568-df11-4e74-b643-3e567a445d2a"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "kyverno-reports-controller-f544fb46d-sn4zb",
+                "namespace": "kyverno",
+                "uid": "1ee5985b-d52f-4f5a-8bce-074b6f97611f"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "245e718a-71ba-40b8-a084-145ac91bbede",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "kyverno-admission-controller-8b68dbb84-mgggq",
+                        "uid": "245e718a-71ba-40b8-a084-145ac91bbede"
+                    }
+                ],
+                "resourceVersion": "145878437",
+                "uid": "b02db80c-ca19-400f-9816-4810d584a203"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "kyverno-admission-controller-8b68dbb84-mgggq",
+                "namespace": "kyverno",
+                "uid": "245e718a-71ba-40b8-a084-145ac91bbede"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "29bc1b4c-c952-4cd8-a365-47b6608b1217",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "kyverno-background-controller-84c46c89cc-7ndgh",
+                        "uid": "29bc1b4c-c952-4cd8-a365-47b6608b1217"
+                    }
+                ],
+                "resourceVersion": "145878450",
+                "uid": "de9c368e-e3b8-41d2-b8ff-a29d9895df4e"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "kyverno-background-controller-84c46c89cc-7ndgh",
+                "namespace": "kyverno",
+                "uid": "29bc1b4c-c952-4cd8-a365-47b6608b1217"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "49400d67-c749-4143-a7b5-2508b49ea9df",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "kyverno-admission-controller-8b68dbb84",
+                        "uid": "49400d67-c749-4143-a7b5-2508b49ea9df"
+                    }
+                ],
+                "resourceVersion": "145878574",
+                "uid": "ac5995bf-7e79-472a-8143-818a92dd4511"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "kyverno-admission-controller-8b68dbb84",
+                "namespace": "kyverno",
+                "uid": "49400d67-c749-4143-a7b5-2508b49ea9df"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "532c1696-d43e-45de-ae61-7e0d62c59903",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "kyverno-background-controller",
+                        "uid": "532c1696-d43e-45de-ae61-7e0d62c59903"
+                    }
+                ],
+                "resourceVersion": "145878387",
+                "uid": "8f94f150-7656-4c60-90bc-8be163d04a2c"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "kyverno-background-controller",
+                "namespace": "kyverno",
+                "uid": "532c1696-d43e-45de-ae61-7e0d62c59903"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "75e2a915-c616-4169-a48e-d7bbbaf33b3a",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "kyverno-cleanup-controller-59bc67d4fd-lnfd2",
+                        "uid": "75e2a915-c616-4169-a48e-d7bbbaf33b3a"
+                    }
+                ],
+                "resourceVersion": "145878451",
+                "uid": "407eba70-032c-48c5-9f89-f05122dbb433"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "kyverno-cleanup-controller-59bc67d4fd-lnfd2",
+                "namespace": "kyverno",
+                "uid": "75e2a915-c616-4169-a48e-d7bbbaf33b3a"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "84fe7353-e55d-4316-909c-c8ecdf9f4b7d",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "kyverno-cleanup-controller-59bc67d4fd",
+                        "uid": "84fe7353-e55d-4316-909c-c8ecdf9f4b7d"
+                    }
+                ],
+                "resourceVersion": "145878611",
+                "uid": "6f0abfb7-635d-43e7-acd8-e6bd47ca5ac8"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "kyverno-cleanup-controller-59bc67d4fd",
+                "namespace": "kyverno",
+                "uid": "84fe7353-e55d-4316-909c-c8ecdf9f4b7d"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "9f7e154e-1e92-49f4-8f04-d17a5d2ebbe5",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "kyverno-background-controller-84c46c89cc",
+                        "uid": "9f7e154e-1e92-49f4-8f04-d17a5d2ebbe5"
+                    }
+                ],
+                "resourceVersion": "145878612",
+                "uid": "3d876868-0176-4980-b065-65a3e6b1e4d8"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "kyverno-background-controller-84c46c89cc",
+                "namespace": "kyverno",
+                "uid": "9f7e154e-1e92-49f4-8f04-d17a5d2ebbe5"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "ca4c3799-9702-487e-9213-5b7d7329d3b2",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "kyverno-cleanup-controller",
+                        "uid": "ca4c3799-9702-487e-9213-5b7d7329d3b2"
+                    }
+                ],
+                "resourceVersion": "145878411",
+                "uid": "ea81a878-f683-41bb-9561-a8f8bdbfba9e"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "kyverno-cleanup-controller",
+                "namespace": "kyverno",
+                "uid": "ca4c3799-9702-487e-9213-5b7d7329d3b2"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "d7d4c1f8-f3e4-42f9-bbc6-8b728052a7d6",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "kyverno-reports-controller-f544fb46d",
+                        "uid": "d7d4c1f8-f3e4-42f9-bbc6-8b728052a7d6"
+                    }
+                ],
+                "resourceVersion": "145878591",
+                "uid": "61fc1d62-0b8b-4ccb-b644-ac61e79f6885"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340280
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "kyverno-reports-controller-f544fb46d",
+                "namespace": "kyverno",
+                "uid": "d7d4c1f8-f3e4-42f9-bbc6-8b728052a7d6"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "dd9b345f-daa1-4319-a738-bf78d65987b3",
+                "namespace": "kyverno",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "kyverno-reports-controller",
+                        "uid": "dd9b345f-daa1-4319-a738-bf78d65987b3"
+                    }
+                ],
+                "resourceVersion": "145878412",
+                "uid": "0e8511a5-636a-4f75-ac8c-965b492db178"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340279
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "kyverno-reports-controller",
+                "namespace": "kyverno",
+                "uid": "dd9b345f-daa1-4319-a738-bf78d65987b3"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:05Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "05d1c17f-3bd4-4e4d-b195-a5ae0e9d38d0",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "scan-vulnerabilityreport-9fb748cdb-g7lk5",
+                        "uid": "05d1c17f-3bd4-4e4d-b195-a5ae0e9d38d0"
+                    }
+                ],
+                "resourceVersion": "145919630",
+                "uid": "852c99ec-8c0d-4370-8029-ce588ba4e3a8"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340535
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "scan-vulnerabilityreport-9fb748cdb-g7lk5",
+                "namespace": "trivy-system",
+                "uid": "05d1c17f-3bd4-4e4d-b195-a5ae0e9d38d0"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:03Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "0da13328-67d7-460d-9d60-844ffafc3e16",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "scan-vulnerabilityreport-86758f69bc-dfrdm",
+                        "uid": "0da13328-67d7-460d-9d60-844ffafc3e16"
+                    }
+                ],
+                "resourceVersion": "145919353",
+                "uid": "3dd54840-d75e-49bd-8820-4b26c0097d2f"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340533
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "scan-vulnerabilityreport-86758f69bc-dfrdm",
+                "namespace": "trivy-system",
+                "uid": "0da13328-67d7-460d-9d60-844ffafc3e16"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:02Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "16d50301-678f-4019-ba6b-dcf9bb287f51",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "scan-vulnerabilityreport-7f85d6965f",
+                        "uid": "16d50301-678f-4019-ba6b-dcf9bb287f51"
+                    }
+                ],
+                "resourceVersion": "145919172",
+                "uid": "1d7feea6-412e-471e-a84b-46290102389c"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340532
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "scan-vulnerabilityreport-7f85d6965f",
+                "namespace": "trivy-system",
+                "uid": "16d50301-678f-4019-ba6b-dcf9bb287f51"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:21:49Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "1ff9a26c-573c-43b8-a206-e9e96ed2d163",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "trivy-operator-748b9bfc5c-vk66z",
+                        "uid": "1ff9a26c-573c-43b8-a206-e9e96ed2d163"
+                    }
+                ],
+                "resourceVersion": "145916966",
+                "uid": "1ca279d7-b8fe-41c4-9a2e-045196348695"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340519
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "trivy-operator-748b9bfc5c-vk66z",
+                "namespace": "trivy-system",
+                "uid": "1ff9a26c-573c-43b8-a206-e9e96ed2d163"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:02Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "34d88325-f9a9-4d52-b150-9355af907bd2",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "scan-vulnerabilityreport-8687979654-v6mjk",
+                        "uid": "34d88325-f9a9-4d52-b150-9355af907bd2"
+                    }
+                ],
+                "resourceVersion": "145919053",
+                "uid": "19cce388-b8a1-40d2-b04a-3c33adc0f42d"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340532
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "scan-vulnerabilityreport-8687979654-v6mjk",
+                "namespace": "trivy-system",
+                "uid": "34d88325-f9a9-4d52-b150-9355af907bd2"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:04Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "34ee3da2-b8bb-4148-a9d6-95420bce6ec9",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "scan-vulnerabilityreport-6c4f647fdc",
+                        "uid": "34ee3da2-b8bb-4148-a9d6-95420bce6ec9"
+                    }
+                ],
+                "resourceVersion": "145919492",
+                "uid": "1a16b4df-9a54-4a71-8019-305b94b473a2"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340534
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "scan-vulnerabilityreport-6c4f647fdc",
+                "namespace": "trivy-system",
+                "uid": "34ee3da2-b8bb-4148-a9d6-95420bce6ec9"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:21:59Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "3c905ae6-5e67-439b-8698-cd1800516fb5",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "scan-vulnerabilityreport-74b9cf67dd",
+                        "uid": "3c905ae6-5e67-439b-8698-cd1800516fb5"
+                    }
+                ],
+                "resourceVersion": "145918617",
+                "uid": "67e81457-3d2f-4e25-9ece-37d3dee68039"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340529
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "scan-vulnerabilityreport-74b9cf67dd",
+                "namespace": "trivy-system",
+                "uid": "3c905ae6-5e67-439b-8698-cd1800516fb5"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:21:57Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "58210d07-8473-4356-9a76-fe88d9e4dc45",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "scan-vulnerabilityreport-bc48974bc",
+                        "uid": "58210d07-8473-4356-9a76-fe88d9e4dc45"
+                    }
+                ],
+                "resourceVersion": "145918254",
+                "uid": "6a5117fe-d210-48e3-9b1f-cc9d7ef4c78d"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340527
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "scan-vulnerabilityreport-bc48974bc",
+                "namespace": "trivy-system",
+                "uid": "58210d07-8473-4356-9a76-fe88d9e4dc45"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:05Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "598258ee-7d2b-4851-9900-dec52074dab8",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "scan-vulnerabilityreport-9fb748cdb",
+                        "uid": "598258ee-7d2b-4851-9900-dec52074dab8"
+                    }
+                ],
+                "resourceVersion": "145919615",
+                "uid": "26a8f4d3-7e6e-405b-8e95-4dae39ffebde"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340535
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "scan-vulnerabilityreport-9fb748cdb",
+                "namespace": "trivy-system",
+                "uid": "598258ee-7d2b-4851-9900-dec52074dab8"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:21:58Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "5ce69452-5451-43fa-bebf-45ca6ffd01c9",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "scan-vulnerabilityreport-5c6f55d488",
+                        "uid": "5ce69452-5451-43fa-bebf-45ca6ffd01c9"
+                    }
+                ],
+                "resourceVersion": "145918443",
+                "uid": "a5ed4693-6ef8-48b5-b64e-3609d195aa06"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340528
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "scan-vulnerabilityreport-5c6f55d488",
+                "namespace": "trivy-system",
+                "uid": "5ce69452-5451-43fa-bebf-45ca6ffd01c9"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:21:54Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "64d458f3-b5f5-4e51-a327-d1252f74e51c",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "scan-vulnerabilityreport-5d7549b559",
+                        "uid": "64d458f3-b5f5-4e51-a327-d1252f74e51c"
+                    }
+                ],
+                "resourceVersion": "145917852",
+                "uid": "2719f007-e3bd-4b78-9a9e-c21026bb7110"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340524
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "scan-vulnerabilityreport-5d7549b559",
+                "namespace": "trivy-system",
+                "uid": "64d458f3-b5f5-4e51-a327-d1252f74e51c"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 4,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "76635597-7427-418c-b64c-a6e1bbae7731",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "Deployment",
+                        "name": "trivy-operator",
+                        "uid": "76635597-7427-418c-b64c-a6e1bbae7731"
+                    }
+                ],
+                "resourceVersion": "145916485",
+                "uid": "98b210f9-d3dd-43c9-a41a-e0d1048b53c0"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340516
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "Deployment",
+                "name": "trivy-operator",
+                "namespace": "trivy-system",
+                "uid": "76635597-7427-418c-b64c-a6e1bbae7731"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:21:59Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "8e2013c6-c65d-4994-bf15-119b17569f24",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "scan-vulnerabilityreport-74b9cf67dd-k7tjb",
+                        "uid": "8e2013c6-c65d-4994-bf15-119b17569f24"
+                    }
+                ],
+                "resourceVersion": "145918626",
+                "uid": "657fecce-cea9-41c7-abf0-e91afde538ff"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340529
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "scan-vulnerabilityreport-74b9cf67dd-k7tjb",
+                "namespace": "trivy-system",
+                "uid": "8e2013c6-c65d-4994-bf15-119b17569f24"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:02Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "9d6c26f6-0efa-475f-93c1-b5da6199b65c",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "scan-vulnerabilityreport-7f85d6965f-g8rph",
+                        "uid": "9d6c26f6-0efa-475f-93c1-b5da6199b65c"
+                    }
+                ],
+                "resourceVersion": "145919175",
+                "uid": "ef9ea32c-cb4c-4a36-93b9-7520f92cc5a3"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340532
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "scan-vulnerabilityreport-7f85d6965f-g8rph",
+                "namespace": "trivy-system",
+                "uid": "9d6c26f6-0efa-475f-93c1-b5da6199b65c"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:04Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "ab445a4d-715c-46ed-9758-8d0d8c0b2a88",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "scan-vulnerabilityreport-6c4f647fdc-7jqwn",
+                        "uid": "ab445a4d-715c-46ed-9758-8d0d8c0b2a88"
+                    }
+                ],
+                "resourceVersion": "145919496",
+                "uid": "46ca121d-c487-45b8-a5bc-ae700c768171"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340534
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "scan-vulnerabilityreport-6c4f647fdc-7jqwn",
+                "namespace": "trivy-system",
+                "uid": "ab445a4d-715c-46ed-9758-8d0d8c0b2a88"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:01Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "b19d0953-5002-4e48-9647-ef805a8c2fce",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "scan-vulnerabilityreport-67cf49d5d9-62bzz",
+                        "uid": "b19d0953-5002-4e48-9647-ef805a8c2fce"
+                    }
+                ],
+                "resourceVersion": "145918935",
+                "uid": "9de97f9c-889b-44c6-be51-4f77dcf483ea"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340531
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "scan-vulnerabilityreport-67cf49d5d9-62bzz",
+                "namespace": "trivy-system",
+                "uid": "b19d0953-5002-4e48-9647-ef805a8c2fce"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:08Z",
+                "generation": 1,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "b968aa13-84a9-4087-926d-adbdaa759d68",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "trivy-operator-748b9bfc5c",
+                        "uid": "b968aa13-84a9-4087-926d-adbdaa759d68"
+                    }
+                ],
+                "resourceVersion": "145916903",
+                "uid": "79be1291-05ef-4a36-8b64-ac23b8f39078"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340518
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "trivy-operator-748b9bfc5c",
+                "namespace": "trivy-system",
+                "uid": "b968aa13-84a9-4087-926d-adbdaa759d68"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:03Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "bb9ef072-e833-4130-9fa8-c54c9e419337",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "scan-vulnerabilityreport-86758f69bc",
+                        "uid": "bb9ef072-e833-4130-9fa8-c54c9e419337"
+                    }
+                ],
+                "resourceVersion": "145919366",
+                "uid": "7c2be67c-4f22-438e-bbe3-4a942f083791"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340533
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "scan-vulnerabilityreport-86758f69bc",
+                "namespace": "trivy-system",
+                "uid": "bb9ef072-e833-4130-9fa8-c54c9e419337"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:02Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "c55745ed-c7d6-46a2-82e7-e3d95b1b6ae3",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "scan-vulnerabilityreport-8687979654",
+                        "uid": "c55745ed-c7d6-46a2-82e7-e3d95b1b6ae3"
+                    }
+                ],
+                "resourceVersion": "145919047",
+                "uid": "fb1f72e7-fada-4661-b35c-5f9047ee8c59"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340532
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "scan-vulnerabilityreport-8687979654",
+                "namespace": "trivy-system",
+                "uid": "c55745ed-c7d6-46a2-82e7-e3d95b1b6ae3"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:21:58Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "c7b59a49-c243-403f-8a79-9015f2ce4085",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "scan-vulnerabilityreport-5c6f55d488-c74t7",
+                        "uid": "c7b59a49-c243-403f-8a79-9015f2ce4085"
+                    }
+                ],
+                "resourceVersion": "145918471",
+                "uid": "eebce44a-496b-4fe3-b24c-0d3aa33d9d3b"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340528
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "scan-vulnerabilityreport-5c6f55d488-c74t7",
+                "namespace": "trivy-system",
+                "uid": "c7b59a49-c243-403f-8a79-9015f2ce4085"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:00Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "c8123354-9d18-4bd2-9b79-3c0d079ebdf9",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "scan-vulnerabilityreport-76dbd5469",
+                        "uid": "c8123354-9d18-4bd2-9b79-3c0d079ebdf9"
+                    }
+                ],
+                "resourceVersion": "145918744",
+                "uid": "55595584-20d7-46f0-9b36-1d736c070428"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340530
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "scan-vulnerabilityreport-76dbd5469",
+                "namespace": "trivy-system",
+                "uid": "c8123354-9d18-4bd2-9b79-3c0d079ebdf9"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:21:54Z",
+                "generation": 3,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "d5a9eee0-4e47-425f-910d-8949aff351b4",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "scan-vulnerabilityreport-5d7549b559-zcl2z",
+                        "uid": "d5a9eee0-4e47-425f-910d-8949aff351b4"
+                    }
+                ],
+                "resourceVersion": "145921393",
+                "uid": "a4b8325e-771c-4788-89ac-f1167015b523"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340535
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "scan-vulnerabilityreport-5d7549b559-zcl2z",
+                "namespace": "trivy-system",
+                "uid": "d5a9eee0-4e47-425f-910d-8949aff351b4"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:00Z",
+                "generation": 3,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "e4ee204a-2b83-4bf8-b090-206e2af05512",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "scan-vulnerabilityreport-76dbd5469-7gvhg",
+                        "uid": "e4ee204a-2b83-4bf8-b090-206e2af05512"
+                    }
+                ],
+                "resourceVersion": "145922366",
+                "uid": "efc74c03-af40-464e-96ff-a011f9f76d2e"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340542
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "scan-vulnerabilityreport-76dbd5469-7gvhg",
+                "namespace": "trivy-system",
+                "uid": "e4ee204a-2b83-4bf8-b090-206e2af05512"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:17:40Z",
+                "generation": 3,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "e5c37929-7977-4724-9874-c5f0a69f772f",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps/v1",
+                        "kind": "ReplicaSet",
+                        "name": "trivy-operator-dd5559d9f",
+                        "uid": "e5c37929-7977-4724-9874-c5f0a69f772f"
+                    }
+                ],
+                "resourceVersion": "145916510",
+                "uid": "2f3d9031-0f93-4269-9960-01aee171e000"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340516
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "apps/v1",
+                "kind": "ReplicaSet",
+                "name": "trivy-operator-dd5559d9f",
+                "namespace": "trivy-system",
+                "uid": "e5c37929-7977-4724-9874-c5f0a69f772f"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:22:01Z",
+                "generation": 2,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "ea3919dc-e597-4bb2-b2c3-cec823ea0133",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "batch/v1",
+                        "kind": "Job",
+                        "name": "scan-vulnerabilityreport-67cf49d5d9",
+                        "uid": "ea3919dc-e597-4bb2-b2c3-cec823ea0133"
+                    }
+                ],
+                "resourceVersion": "145918906",
+                "uid": "a5628362-3a3a-425a-85a0-3995d46d331a"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'autogen-disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "autogen-disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340531
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "batch/v1",
+                "kind": "Job",
+                "name": "scan-vulnerabilityreport-67cf49d5d9",
+                "namespace": "trivy-system",
+                "uid": "ea3919dc-e597-4bb2-b2c3-cec823ea0133"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        },
+        {
+            "apiVersion": "wgpolicyk8s.io/v1alpha2",
+            "kind": "PolicyReport",
+            "metadata": {
+                "creationTimestamp": "2026-07-06T12:21:57Z",
+                "generation": 3,
+                "labels": {
+                    "app.kubernetes.io/managed-by": "kyverno"
+                },
+                "name": "f2dbaa24-0b63-4f75-822f-c09a8dea7323",
+                "namespace": "trivy-system",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "Pod",
+                        "name": "scan-vulnerabilityreport-bc48974bc-bpw24",
+                        "uid": "f2dbaa24-0b63-4f75-822f-c09a8dea7323"
+                    }
+                ],
+                "resourceVersion": "145922735",
+                "uid": "824bb63b-b442-420e-9f61-8f9c284f6042"
+            },
+            "results": [
+                {
+                    "message": "validation rule 'disallow-privileged' passed.",
+                    "policy": "disallow-privileged-containers",
+                    "properties": {
+                        "process": "background scan"
+                    },
+                    "result": "pass",
+                    "rule": "disallow-privileged",
+                    "scored": true,
+                    "source": "kyverno",
+                    "timestamp": {
+                        "nanos": 0,
+                        "seconds": 1783340544
+                    }
+                }
+            ],
+            "scope": {
+                "apiVersion": "v1",
+                "kind": "Pod",
+                "name": "scan-vulnerabilityreport-bc48974bc-bpw24",
+                "namespace": "trivy-system",
+                "uid": "f2dbaa24-0b63-4f75-822f-c09a8dea7323"
+            },
+            "summary": {
+                "error": 0,
+                "fail": 0,
+                "pass": 1,
+                "skip": 0,
+                "warn": 0
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": ""
+    }
+}
