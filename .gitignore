@@ -1,0 +1,16 @@
+# Secrets locaux — NE JAMAIS committer (cf. brief)
+kubeconfig*.yml
+kubeconfig*.yaml
+ai-endpoints-key.txt
+*.token
+.env
+
+# Node
+node_modules/
+npm-debug.log
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/

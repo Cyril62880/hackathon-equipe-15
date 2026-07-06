@@ -1,0 +1,64 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: ai-remediation
+  namespace: ai-remediation
+spec:
+  # Toutes les heures : analyse les rapports et ouvre une PR si nécessaire.
+  schedule: "0 * * * *"
+  concurrencyPolicy: Forbid
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  jobTemplate:
+    spec:
+      backoffLimit: 1
+      activeDeadlineSeconds: 600
+      template:
+        metadata:
+          labels:
+            app: ai-remediation
+        spec:
+          serviceAccountName: ai-remediation
+          restartPolicy: Never
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            fsGroup: 10001
+            seccompProfile:
+              type: RuntimeDefault
+          containers:
+            - name: remediate
+              # ⚠️ Remplacer par l'image poussée : voir ../../ai-remediation/Dockerfile
+              image: REGISTRY_PLACEHOLDER/ai-remediation:latest
+              imagePullPolicy: Always
+              args:
+                - "--from-cluster"
+                - "--target"
+                - "manifest/vulnerable-app/deployment.yaml"
+                - "--repo"
+                - "Cyril62880/hackathon-equipe-15"
+                - "--base-branch"
+                - "main"
+              envFrom:
+                - secretRef:
+                    name: ai-remediation-secrets   # fourni par External Secrets Operator
+              securityContext:
+                allowPrivilegeEscalation: false
+                readOnlyRootFilesystem: true
+                runAsNonRoot: true
+                capabilities:
+                  drop: ["ALL"]
+              resources:
+                requests:
+                  cpu: 100m
+                  memory: 128Mi
+                limits:
+                  cpu: 500m
+                  memory: 256Mi
+              volumeMounts:
+                - name: tmp
+                  mountPath: /tmp
+          volumes:
+            - name: tmp
+              emptyDir: {}

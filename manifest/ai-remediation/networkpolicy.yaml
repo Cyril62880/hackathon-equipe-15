@@ -1,0 +1,27 @@
+# Durcissement réseau : deny-all par défaut, egress restreint au strict nécessaire
+# (DNS, API Kubernetes, HTTPS sortant vers OVH AI Endpoints et GitHub).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: ai-remediation-default-deny
+  namespace: ai-remediation
+spec:
+  podSelector: {}
+  policyTypes: ["Ingress", "Egress"]
+  # Aucun ingress autorisé (la couche IA n'expose rien).
+  ingress: []
+  egress:
+    # Résolution DNS.
+    - to: []
+      ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+    # HTTPS sortant (API Kubernetes, OVH AI Endpoints, API GitHub).
+    - to: []
+      ports:
+        - protocol: TCP
+          port: 443
+        - protocol: TCP
+          port: 6443

@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: vulnerable-nginx
+  name: vulnerable-web
   namespace: demo-vulnerable
 spec:
   selector:
-    app: vulnerable-nginx
+    app: vulnerable-web
   ports:
     - port: 80
       targetPort: 80
