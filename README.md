@@ -1,6 +1,6 @@
 # Hackathon OVH x Ynov - GitOps Security Remediation
 
-Projet equipe 3 pour le hackathon Lille Ynov Campus x OVHcloud des 6 et 7 juillet 2026.
+Projet equipe 15 pour le hackathon Lille Ynov Campus x OVHcloud des 6 et 7 juillet 2026.
 
 ## Objectif
 
