@@ -130,9 +130,32 @@ export async function fromCluster() {
         findings.push(...dispatch(plural, item));
       }
     } catch {
-      
+      // CRD peut être absente selon l'installation — on ignore.
     }
   }
+
+  // Alertes runtime Falco via Falcosidekick (Kubernetes Events dans le namespace falco).
+  try {
+    const coreApi = kc.makeApiClient(k8s.CoreV1Api);
+    const evResp = await coreApi.listNamespacedEvent({ namespace: 'falco' });
+    const evBody = evResp?.body ?? evResp;
+    for (const ev of (evBody.items || [])) {
+      if (ev.source?.component !== 'falcosidekick') continue;
+      findings.push({
+        source: 'falco',
+        namespace: ev.involvedObject?.namespace || 'falco',
+        resource: ev.involvedObject?.name || 'unknown',
+        identifier: ev.reason || 'falco-alert',
+        severity: ev.type === 'Warning' ? 'HIGH' : 'LOW',
+        title: ev.message || '',
+        fix: '',
+        extra: { count: ev.count, firstTime: ev.firstTimestamp },
+      });
+    }
+  } catch {
+    // Falcosidekick non disponible — on ignore.
+  }
+
   return findings;
 }
 
