@@ -28,7 +28,7 @@ spec:
               type: RuntimeDefault
           containers:
             - name: remediate
-              image: ghcr.io/cyril62880/ai-remediation:8a66918
+              image: ghcr.io/cyril62880/ai-remediation:5926f67
               imagePullPolicy: Always
               args:
                 - "--from-cluster"
