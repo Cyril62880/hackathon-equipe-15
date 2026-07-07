@@ -27,7 +27,7 @@ CONTRAINTES DE SORTIE STRICTES :
 
 export class OvhAiClient {
   constructor({ apiKey, baseURL = DEFAULT_BASE_URL, model = DEFAULT_MODEL } = {}) {
-    apiKey = apiKey || process.env.OVH_AI_ENDPOINTS_ACCESS_TOKEN;
+    apiKey = (apiKey || process.env.OVH_AI_ENDPOINTS_ACCESS_TOKEN || '').trim();
     if (!apiKey) {
       throw new Error(
         'Token OVH AI manquant : définir OVH_AI_ENDPOINTS_ACCESS_TOKEN.',

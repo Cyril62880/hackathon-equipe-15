@@ -10,7 +10,7 @@ function splitRepo(fullName) {
 }
 
 function client(token) {
-  token = token || process.env.GITHUB_TOKEN;
+  token = (token || process.env.GITHUB_TOKEN || '').trim();
   if (!token) throw new Error('GITHUB_TOKEN manquant pour l\'accès GitHub.');
   return new Octokit({ auth: token });
 }
