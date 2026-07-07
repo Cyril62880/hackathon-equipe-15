@@ -35,10 +35,11 @@ spec:
         app.kubernetes.io/name: alnoria
         app.kubernetes.io/component: database
     spec:
+      automountServiceAccountToken: false
       containers:
         - name: db
-          image: kasperski777/alnoria-db:latest
-          imagePullPolicy: Always
+          image: myregistry.example.com/alnoria-db:v1.0.0
+          imagePullPolicy: IfNotPresent
           ports:
             - name: mysql
               containerPort: 3306
@@ -80,6 +81,16 @@ spec:
             limits:
               cpu: 500m
               memory: 512Mi
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1000
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
           volumeMounts:
             - name: data
               mountPath: /var/lib/mysql
