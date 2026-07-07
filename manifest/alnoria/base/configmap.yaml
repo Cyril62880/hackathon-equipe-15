@@ -13,6 +13,8 @@ data:
   SPRING_PROFILES_ACTIVE: "kubernetes"
   SPRING_DATASOURCE_URL: "jdbc:postgresql://alnoria-db:5432/alnoria"
   API_INTERNAL_URL: "http://alnoria-api:8080"
+  AUTH_API_URL: "http://alnoria-api:8080"
+  API_PROXY_TARGET: "http://alnoria-api:8080"
   API_PUBLIC_URL: "/api"
   VITE_API_URL: "/api"
   REACT_APP_API_URL: "/api"
