@@ -19,13 +19,12 @@ patches:
         path: /metadata/name
         value: dvwa-cluster-admin-acc
 
-# Pour épingler les pods sur un nœud dédié, labellisez le nœud puis décommentez :
-# patches:
-#   - target:
-#       kind: Deployment
-#       name: vulnerable-web
-#     patch: |
-#       - op: add
-#         path: /spec/template/spec/nodeSelector
-#         value:
-#           kubernetes.io/env: acc
+patches:
+  - target:
+      kind: Deployment
+      name: vulnerable-web
+    patch: |
+      - op: add
+        path: /spec/template/spec/nodeSelector
+        value:
+          env: acc
