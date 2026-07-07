@@ -34,9 +34,15 @@ spec:
         app.kubernetes.io/name: alnoria
         app.kubernetes.io/component: web
     spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: web
-          image: kasperski777/alnoria-web:latest
+          image: kasperski777/alnoria-web:1.0.0
           imagePullPolicy: Always
           ports:
             - name: http
@@ -98,6 +104,7 @@ spec:
               memory: 256Mi
           securityContext:
             allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
             capabilities:
               drop:
                 - ALL
