@@ -1,65 +1,31 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
-  name: alnoria-dev
+  name: alnoria
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
-    targetRevision: main
-    path: manifest/alnoria/overlays/dev
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: dev-alnoria
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: alnoria-acc
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
-    targetRevision: main
-    path: manifest/alnoria/overlays/acc
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: acc-alnoria
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: alnoria-prod
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
-    targetRevision: main
-    path: manifest/alnoria/overlays/prod
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: prod-alnoria
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-      - ServerSideApply=true
+  generators:
+    - list:
+        elements:
+          - env: dev
+          - env: acc
+          - env: prod
+  template:
+    metadata:
+      name: "alnoria-{{env}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
+        targetRevision: main
+        path: "manifest/alnoria/overlays/{{env}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{env}}-alnoria"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true
