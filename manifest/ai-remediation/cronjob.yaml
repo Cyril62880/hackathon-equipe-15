@@ -4,7 +4,6 @@ metadata:
   name: ai-remediation
   namespace: ai-remediation
 spec:
-  # Toutes les heures : analyse les rapports et ouvre une PR si nécessaire.
   schedule: "0 * * * *"
   concurrencyPolicy: Forbid
   successfulJobsHistoryLimit: 3
@@ -43,7 +42,7 @@ spec:
                 - "vulnerable"
               envFrom:
                 - secretRef:
-                    name: ai-remediation-secrets   # fourni par External Secrets Operator
+                    name: ai-remediation-secrets  
               securityContext:
                 allowPrivilegeEscalation: false
                 readOnlyRootFilesystem: true

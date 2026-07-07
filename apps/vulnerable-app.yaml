@@ -1,31 +1,65 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
-  name: vulnerable-app
+  name: vulnerable-app-dev
   namespace: argocd
 spec:
-  generators:
-    - list:
-        elements:
-          - env: dev
-          - env: acc
-          - env: prod
-  template:
-    metadata:
-      name: "vulnerable-app-{{env}}"
-    spec:
-      project: default
-      source:
-        repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
-        targetRevision: main
-        path: "manifest/vulnerable-app/overlays/{{env}}"
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: "{{env}}-vulnerable"
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        syncOptions:
-          - CreateNamespace=true
-          - ServerSideApply=true
+  project: default
+  source:
+    repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
+    targetRevision: main
+    path: manifest/vulnerable-app/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dev-vulnerable
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vulnerable-app-acc
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
+    targetRevision: main
+    path: manifest/vulnerable-app/overlays/acc
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: acc-vulnerable
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: vulnerable-app-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
+    targetRevision: main
+    path: manifest/vulnerable-app/overlays/prod
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: prod-vulnerable
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

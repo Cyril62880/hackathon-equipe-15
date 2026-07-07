@@ -1,5 +1,3 @@
-# RBAC minimal pour la couche IA : lecture SEULE des rapports de sécurité.
-# Aucun droit d'écriture sur le cluster — l'IA agit uniquement via des PR Git.
 apiVersion: v1
 kind: ServiceAccount
 metadata:

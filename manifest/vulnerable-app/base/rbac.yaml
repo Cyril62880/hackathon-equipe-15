@@ -1,7 +1,3 @@
-# Mauvaise pratique VOLONTAIRE (cible de démo) : ServiceAccount avec token
-# automonté et binding cluster-admin. Combiné au token SA monté dans le pod,
-# cela illustre une escalade de privilèges triviale — matière idéale pour
-# Kyverno (RBAC trop large) et pour l'analyse IA.
 apiVersion: v1
 kind: ServiceAccount
 metadata:

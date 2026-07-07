@@ -15,24 +15,15 @@ spec:
       labels:
         app: vulnerable-web
     spec:
-      # Mauvaise pratique : pas de securityContext au niveau pod, pas de seccomp.
       hostNetwork: false
-      # Mauvaise pratique : SA cluster-admin + token automonté (cf. rbac.yaml).
       serviceAccountName: dvwa-sa
       automountServiceAccountToken: true
       containers:
         - name: dvwa
-          # Image DAMN VULNERABLE WEB APP : application volontairement vulnérable,
-          # autonome (Apache + PHP + MySQL embarqués), base ancienne.
-          # -> génère un rapport Trivy très riche (des centaines de CVE OS + PHP),
-          #    des findings ConfigAudit, du secret-scanning, et le tag "latest"
-          #    déclenche la policy Kyverno "disallow-latest".
           image: vulnerables/web-dvwa:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
-          # Mauvaise pratique : aucune limite CPU/mémoire (pas de resources).
-          # Mauvaise pratique : container privilégié + root + escalade autorisée.
           securityContext:
             privileged: true
             allowPrivilegeEscalation: true
@@ -43,7 +34,6 @@ spec:
               add:
                 - NET_ADMIN
                 - SYS_ADMIN
-          # Mauvaise pratique : secret en clair dans les variables d'environnement.
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "root"
@@ -51,11 +41,9 @@ spec:
               value: "AKIAIOSFODNN7EXAMPLE"
             - name: AWS_SECRET_ACCESS_KEY
               value: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-          # Mauvaise pratique : montage du filesystem hôte en écriture.
           volumeMounts:
             - name: host-root
               mountPath: /host
-            # Mauvaise pratique : kubeconfig leaké monté dans le pod.
             - name: leaked-kubeconfig
               mountPath: /root/.kube
               readOnly: true

@@ -3,7 +3,5 @@ kind: Namespace
 metadata:
   name: ai-remediation
   labels:
-    # Applique le Pod Security Standard "restricted" à tout le namespace :
-    # nos propres composants sont durcis, à l'opposé de la cible vulnérable.
     pod-security.kubernetes.io/enforce: restricted
     pod-security.kubernetes.io/enforce-version: latest
