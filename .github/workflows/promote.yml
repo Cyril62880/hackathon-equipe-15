@@ -1,0 +1,79 @@
+name: Promote environment
+
+# Déclenché manuellement depuis l'onglet Actions de GitHub.
+# Copie le tag d'image de l'overlay source vers l'overlay cible,
+# puis ouvre une PR pour review humaine avant merge.
+on:
+  workflow_dispatch:
+    inputs:
+      from_env:
+        description: "Environnement source"
+        required: true
+        type: choice
+        options: [dev, acc]
+      to_env:
+        description: "Environnement cible"
+        required: true
+        type: choice
+        options: [acc, prod]
+
+jobs:
+  promote:
+    name: "Promote ${{ inputs.from_env }} → ${{ inputs.to_env }}"
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Extract newTag from source overlay
+        id: tag
+        run: |
+          SRC="manifest/vulnerable-app/overlays/${{ inputs.from_env }}/kustomization.yaml"
+          TAG=$(grep 'newTag:' "$SRC" 2>/dev/null | head -1 | awk '{print $2}' | tr -d '"' || true)
+          if [ -z "$TAG" ]; then
+            echo "Aucun newTag trouvé dans l'overlay ${{ inputs.from_env }}." >&2
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Patch target overlay
+        if: steps.tag.outputs.skip == 'false'
+        run: |
+          DST="manifest/vulnerable-app/overlays/${{ inputs.to_env }}/kustomization.yaml"
+          TAG="${{ steps.tag.outputs.tag }}"
+          if grep -q 'newTag:' "$DST"; then
+            sed -i "s|newTag:.*|newTag: \"${TAG}\"|" "$DST"
+          else
+            # Ajoute le bloc images s'il n'existe pas encore.
+            printf '\nimages:\n  - name: vulnerables/web-dvwa\n    newTag: "%s"\n' "$TAG" >> "$DST"
+          fi
+
+      - name: Open promotion PR
+        if: steps.tag.outputs.skip == 'false'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: "promote/${{ inputs.from_env }}-to-${{ inputs.to_env }}"
+          delete-branch: true
+          commit-message: "promote(${{ inputs.to_env }}): bump image to ${{ steps.tag.outputs.tag }}"
+          title: "promote: ${{ inputs.from_env }} → ${{ inputs.to_env }} (${{ steps.tag.outputs.tag }})"
+          body: |
+            ## Promotion automatique
+
+            | | |
+            |---|---|
+            | **Source** | `${{ inputs.from_env }}` |
+            | **Cible** | `${{ inputs.to_env }}` |
+            | **Tag image** | `${{ steps.tag.outputs.tag }}` |
+
+            Après merge, Argo CD synchronise automatiquement `${{ inputs.to_env }}-vulnerable`.
+
+      - name: No-op notice
+        if: steps.tag.outputs.skip == 'true'
+        run: |
+          echo "::notice::L'overlay ${{ inputs.from_env }} n'a pas de newTag — rien à promouvoir. Ajoutez un bloc images: dans kustomization.yaml si vous utilisez une image custom."

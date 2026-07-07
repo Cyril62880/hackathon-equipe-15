@@ -1,0 +1,75 @@
+name: Build & Push ai-remediation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ai-remediation/**'
+      - '.github/workflows/build-push.yml'
+
+env:
+  IMAGE: ghcr.io/cyril62880/ai-remediation
+
+jobs:
+  build:
+    name: Docker build & push
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    outputs:
+      sha: ${{ steps.sha.outputs.short }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Compute short SHA
+        id: sha
+        run: echo "short=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./ai-remediation
+          push: true
+          tags: |
+            ${{ env.IMAGE }}:${{ steps.sha.outputs.short }}
+            ${{ env.IMAGE }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  update-tag:
+    name: Patch CronJob image tag in repo
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Utilise un token avec droit push pour pouvoir commit sur main.
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update image tag in CronJob manifest
+        run: |
+          SHA="${{ needs.build.outputs.sha }}"
+          sed -i \
+            "s|image: ghcr\.io/cyril62880/ai-remediation:.*|image: ghcr.io/cyril62880/ai-remediation:${SHA}|" \
+            manifest/ai-remediation/cronjob.yaml
+
+      - name: Commit & push tag update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add manifest/ai-remediation/cronjob.yaml
+          git diff --staged --quiet && echo "No change, skipping commit." && exit 0
+          git commit -m "ci: bump ai-remediation image to ${{ needs.build.outputs.sha }}"
+          git push

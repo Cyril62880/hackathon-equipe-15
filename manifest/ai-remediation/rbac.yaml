@@ -1,0 +1,33 @@
+# RBAC minimal pour la couche IA : lecture SEULE des rapports de sécurité.
+# Aucun droit d'écriture sur le cluster — l'IA agit uniquement via des PR Git.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: ai-remediation
+  namespace: ai-remediation
+automountServiceAccountToken: true
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ai-remediation-reader
+rules:
+  - apiGroups: ["aquasecurity.github.io"]
+    resources: ["vulnerabilityreports", "configauditreports"]
+    verbs: ["get", "list"]
+  - apiGroups: ["wgpolicyk8s.io"]
+    resources: ["policyreports", "clusterpolicyreports"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: ai-remediation-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ai-remediation-reader
+subjects:
+  - kind: ServiceAccount
+    name: ai-remediation
+    namespace: ai-remediation

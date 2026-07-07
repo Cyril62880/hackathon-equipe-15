@@ -1,0 +1,22 @@
+{
+  "name": "ai-remediation",
+  "version": "1.0.0",
+  "description": "Couche IA de remédiation GitOps : rapports Trivy/Kyverno -> OVH AI Endpoints -> Pull Request",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "ai-remediate": "src/remediate.js"
+  },
+  "scripts": {
+    "start": "node src/remediate.js"
+  },
+  "dependencies": {
+    "@kubernetes/client-node": "^0.22.3",
+    "@octokit/rest": "^21.0.2",
+    "commander": "^12.1.0",
+    "openai": "^4.67.3"
+  }
+}

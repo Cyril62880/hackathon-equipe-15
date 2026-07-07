@@ -1,0 +1,35 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Namespace cible — kustomize patche automatiquement namespace: sur toutes les
+# ressources namespace-scoped ET les subjects.namespace des ClusterRoleBindings.
+namespace: dev-vulnerable
+
+resources:
+  - ../../base
+  - namespace.yaml
+
+commonLabels:
+  env: dev
+
+# Renomme le ClusterRoleBinding (cluster-scoped) pour éviter la collision avec
+# les overlays acc et prod qui créent le même nom de base.
+patches:
+  - target:
+      kind: ClusterRoleBinding
+      name: dvwa-cluster-admin
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: dvwa-cluster-admin-dev
+
+# Pour épingler les pods sur un nœud dédié, labellisez le nœud puis décommentez :
+# patches:
+#   - target:
+#       kind: Deployment
+#       name: vulnerable-web
+#     patch: |
+#       - op: add
+#         path: /spec/template/spec/nodeSelector
+#         value:
+#           kubernetes.io/env: dev

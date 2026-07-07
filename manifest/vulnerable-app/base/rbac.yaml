@@ -1,0 +1,25 @@
+# Mauvaise pratique VOLONTAIRE (cible de démo) : ServiceAccount avec token
+# automonté et binding cluster-admin. Combiné au token SA monté dans le pod,
+# cela illustre une escalade de privilèges triviale — matière idéale pour
+# Kyverno (RBAC trop large) et pour l'analyse IA.
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: dvwa-sa
+  namespace: demo-vulnerable
+automountServiceAccountToken: true
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: dvwa-cluster-admin
+  labels:
+    demo: insecure-on-purpose
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+  - kind: ServiceAccount
+    name: dvwa-sa
+    namespace: demo-vulnerable
