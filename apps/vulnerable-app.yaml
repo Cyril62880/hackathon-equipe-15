@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
     targetRevision: main
-    path: manifests/vulnerable-app        # ← nouveau chemin
+    path: manifest/vulnerable-app        # ← nouveau chemin
   destination:
     server: https://kubernetes.default.svc
     namespace: demo-vulnerable
