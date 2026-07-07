@@ -42,8 +42,8 @@ export async function openRemediationPr({
   const base = await octokit.rest.repos.getBranch({ owner, repo, branch: baseBranch });
   const stamp = new Date()
     .toISOString()
-    .replace(/[-:T]/g, '')
-    .slice(0, 15); 
+    .replace(/[-:TZ.]/g, '')
+    .slice(0, 14);
   const branch = `ai-remediation/${stamp}`;
 
   let currentSha;
