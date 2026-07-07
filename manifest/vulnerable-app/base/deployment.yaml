@@ -17,23 +17,28 @@ spec:
     spec:
       hostNetwork: false
       serviceAccountName: dvwa-sa
-      automountServiceAccountToken: true
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 2000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: dvwa
-          image: vulnerables/web-dvwa:latest
-          imagePullPolicy: Always
+          image: vulnerables/web-dvwa:1.2.3
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
           securityContext:
-            privileged: true
-            allowPrivilegeEscalation: true
-            runAsNonRoot: false
-            runAsUser: 0
-            readOnlyRootFilesystem: false
+            privileged: false
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
             capabilities:
-              add:
-                - NET_ADMIN
-                - SYS_ADMIN
+              drop:
+                - ALL
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: "root"
@@ -41,20 +46,10 @@ spec:
               value: "AKIAIOSFODNN7EXAMPLE"
             - name: AWS_SECRET_ACCESS_KEY
               value: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-          volumeMounts:
-            - name: host-root
-              mountPath: /host
-            - name: leaked-kubeconfig
-              mountPath: /root/.kube
-              readOnly: true
-      volumes:
-        - name: host-root
-          hostPath:
-            path: /
-            type: Directory
-        - name: leaked-kubeconfig
-          secret:
-            secretName: leaked-kubeconfig
-            items:
-              - key: config
-                path: config
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
