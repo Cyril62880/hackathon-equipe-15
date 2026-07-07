@@ -4,7 +4,7 @@ import OpenAI from 'openai';
 const DEFAULT_BASE_URL =
   process.env.OVH_AI_ENDPOINT_URL ||
   'https://oai.endpoints.kepler.ai.cloud.ovh.net/v1';
-const DEFAULT_MODEL = process.env.OVH_AI_MODEL || 'Meta-Llama-3_1-70B-Instruct';
+const DEFAULT_MODEL = process.env.OVH_AI_MODEL || 'Meta-Llama-3_3-70B-Instruct';
 
 export const SYSTEM_PROMPT = `Tu es un ingénieur sécurité Kubernetes. On te fournit un manifeste Kubernetes
 et la liste des vulnérabilités / mauvaises configurations détectées par Trivy
