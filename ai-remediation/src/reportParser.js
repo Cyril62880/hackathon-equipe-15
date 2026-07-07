@@ -124,20 +124,21 @@ export async function fromCluster() {
   const findings = [];
   for (const [group, version, plural] of crds) {
     try {
-      const resp = await api.listClusterCustomObject({ group, version, plural });
-      const body = resp?.body ?? resp; 
+      const resp = await api.listClusterCustomObject(group, version, plural);
+      const body = resp?.body ?? resp;
       for (const item of body.items || []) {
         findings.push(...dispatch(plural, item));
       }
-    } catch {
+    } catch (e) {
       // CRD peut être absente selon l'installation — on ignore.
+      process.stderr.write(`[warn] ${plural}: ${e.message}\n`);
     }
   }
 
   // Alertes runtime Falco via Falcosidekick (Kubernetes Events dans le namespace falco).
   try {
     const coreApi = kc.makeApiClient(k8s.CoreV1Api);
-    const evResp = await coreApi.listNamespacedEvent({ namespace: 'falco' });
+    const evResp = await coreApi.listNamespacedEvent('falco');
     const evBody = evResp?.body ?? evResp;
     for (const ev of (evBody.items || [])) {
       if (ev.source?.component !== 'falcosidekick') continue;
