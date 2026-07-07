@@ -1,5 +1,6 @@
 
 import fs from 'node:fs';
+import path from 'node:path';
 import { Command } from 'commander';
 
 import * as reportParser from './reportParser.js';
@@ -9,10 +10,13 @@ function parseArgs(argv) {
   program
     .requiredOption('--target <path...>', 'Manifeste(s) à corriger (relatifs à la racine du repo)')
     .option('--reports-dir <dir>', 'Dossier des rapports JSON exportés')
-    .option('--from-cluster', 'Lire les rapports Trivy/Kyverno via l\'API Kubernetes')
+    .option('--from-cluster', "Lire les rapports Trivy/Kyverno via l'API Kubernetes")
     .option('--repo <owner/repo>', 'Dépôt GitHub (obligatoire hors --dry-run)')
     .option('--base-branch <branch>', 'Branche de base', 'main')
-    .option('--focus <substr>', 'Ne garder que les findings dont le namespace/resource contient cette sous-chaîne')
+    .option(
+      '--focus <substr>',
+      'Filtrer globalement les findings (tous les fichiers) sur ce sous-chaîne',
+    )
     .option('--dry-run', "N'ouvre pas de PR : affiche le correctif proposé")
     .allowExcessArguments(false);
   program.parse(argv);
@@ -43,38 +47,76 @@ async function collectFindings(opts) {
   return reportParser.fromFiles(opts.reportsDir);
 }
 
-async function main(argv) {
-  const opts = parseArgs(argv);
+// Dérive un filtre de namespace depuis le chemin du manifeste.
+// Ex: "manifest/vulnerable-app/base/deployment.yaml" → "vulnerable"
+//     "manifest/alnoria/base/api.yaml"               → "alnoria"
+//     "manifest/ai-remediation/rbac.yaml"            → "ai-remediation"
+function namespaceHintFromPath(filePath) {
+  const parts = filePath.split(path.sep).join('/').split('/');
+  // prend le segment après "manifest/"
+  const idx = parts.indexOf('manifest');
+  if (idx >= 0 && parts[idx + 1]) {
+    const app = parts[idx + 1]; // "vulnerable-app" | "alnoria" | "ai-remediation"
+    if (app === 'vulnerable-app') return 'vulnerable';
+    if (app === 'alnoria') return 'alnoria';
+    if (app === 'ai-remediation') return 'ai-remediation';
+  }
+  return null;
+}
 
-  // Normalise --target to always be an array
-  const targets = Array.isArray(opts.target) ? opts.target : [opts.target];
+function filterFindings(findings, hint, globalFocus) {
+  let result = findings;
 
-  console.log(`→ Collecte des findings (${opts.fromCluster ? 'cluster' : opts.reportsDir})…`);
-  let findings = await collectFindings(opts);
-
-  if (opts.focus) {
-    const needle = opts.focus.toLowerCase();
-    findings = findings.filter(
+  // Filtre global (--focus) si présent
+  if (globalFocus) {
+    const needle = globalFocus.toLowerCase();
+    result = result.filter(
       (f) =>
         f.namespace.toLowerCase().includes(needle) ||
         f.resource.toLowerCase().includes(needle),
     );
   }
 
-  if (findings.length === 0) {
-    console.error('Aucun finding exploitable. Rien à corriger.');
-    return 0;
+  // Filtre par app si on a un hint (et qu'on n'a pas déjà filtré globalement)
+  if (hint && !globalFocus) {
+    const relevant = result.filter(
+      (f) =>
+        f.namespace.toLowerCase().includes(hint) ||
+        f.resource.toLowerCase().includes(hint),
+    );
+    // Si des findings correspondent à cette app, on les utilise; sinon, on garde tout
+    // pour que l'IA applique quand même les bonnes pratiques générales.
+    if (relevant.length > 0) return relevant;
   }
 
-  const summary = reportParser.summarize(findings);
-  console.log(`→ ${findings.length} findings collectés.\n${summary}\n`);
+  return result;
+}
+
+async function main(argv) {
+  const opts = parseArgs(argv);
+  const targets = Array.isArray(opts.target) ? opts.target : [opts.target];
+
+  console.log(`→ Collecte des findings (${opts.fromCluster ? 'cluster' : opts.reportsDir})…`);
+  const allFindings = await collectFindings(opts);
+  console.log(`→ ${allFindings.length} findings bruts collectés (tous namespaces).`);
 
   const { OvhAiClient } = await import('./ovhAi.js');
   const client = new OvhAiClient();
 
   const fixedFiles = [];
+
   for (const target of targets) {
-    console.log(`→ [${target}] Chargement du manifeste…`);
+    const hint = namespaceHintFromPath(target);
+    const findings = filterFindings(allFindings, hint, opts.focus);
+
+    if (findings.length === 0) {
+      console.log(`→ [${target}] Aucun finding pertinent, ignoré.`);
+      continue;
+    }
+
+    const summary = reportParser.summarize(findings, 30);
+    console.log(`\n→ [${target}] ${findings.length} findings (${hint ?? 'global'}) — appel OVH AI…`);
+
     let manifestYaml;
     try {
       manifestYaml = await loadTarget(target, opts);
@@ -83,13 +125,12 @@ async function main(argv) {
       continue;
     }
 
-    console.log(`→ [${target}] Appel OVH AI Endpoints…`);
     let fixed;
     try {
       fixed = await client.proposeFix(manifestYaml, summary);
     } catch (aiErr) {
-      console.error(`OVH AI error (${target}): ${aiErr.message}`);
-      console.error(`code=${aiErr.code} status=${aiErr.status} cause=${aiErr.cause?.message ?? aiErr.cause}`);
+      console.error(`  ✗ OVH AI error (${target}): ${aiErr.message}`);
+      console.error(`    code=${aiErr.code} status=${aiErr.status} cause=${aiErr.cause?.message ?? aiErr.cause}`);
       continue;
     }
 
@@ -114,7 +155,9 @@ async function main(argv) {
   }
 
   const { openRemediationPr } = await import('./githubPr.js');
-  console.log(`→ Ouverture de la Pull Request de remédiation (${fixedFiles.length} fichier(s))…`);
+  console.log(
+    `\n→ Ouverture de la Pull Request de remédiation (${fixedFiles.length} fichier(s))…`,
+  );
   try {
     const url = await openRemediationPr({
       repoFullName: opts.repo,
