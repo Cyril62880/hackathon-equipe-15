@@ -24,7 +24,9 @@ spec:
             rulesCountersEnabled: true
             resourceUtilizationEnabled: true
             stateCountersEnabled: true
-            kernelEventCountersEnabled: true
+
+        webserver:
+          prometheusMetricsEnabled: true
 
         serviceMonitor:
           create: true
