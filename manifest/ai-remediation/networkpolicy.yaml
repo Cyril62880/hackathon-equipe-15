@@ -5,7 +5,9 @@ metadata:
   namespace: ai-remediation
 spec:
   podSelector: {}
-  policyTypes: ["Ingress", "Egress"]
+  policyTypes:
+    - Ingress
+    - Egress
   ingress: []
   egress:
     - ports:
