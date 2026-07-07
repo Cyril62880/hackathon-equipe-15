@@ -17,6 +17,17 @@ spec:
         falco:
           jsonOutput: true
           logLevel: info
+          metrics:
+            enabled: true
+            interval: 1m
+            outputRule: true
+            rulesCountersEnabled: true
+            resourceUtilizationEnabled: true
+            stateCountersEnabled: true
+            kernelEventCountersEnabled: true
+
+        serviceMonitor:
+          create: true
 
         driver:
           enabled: true

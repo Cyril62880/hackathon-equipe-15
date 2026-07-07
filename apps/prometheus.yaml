@@ -15,11 +15,24 @@ spec:
         grafana:
           enabled: true
           adminPassword: hackathon
+          defaultDashboardsEnabled: true
+          sidecar:
+            dashboards:
+              enabled: true
+              searchNamespace: monitoring
+              label: grafana_dashboard
+              labelValue: "1"
+              folderAnnotation: grafana_folder
+            datasources:
+              enabled: true
+              defaultDatasourceEnabled: true
+              uid: prometheus
 
         prometheus:
           prometheusSpec:
             serviceMonitorSelectorNilUsesHelmValues: false
             podMonitorSelectorNilUsesHelmValues: false
+            ruleSelectorNilUsesHelmValues: false
 
         alertmanager:
           enabled: true

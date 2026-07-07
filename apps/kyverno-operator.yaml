@@ -11,6 +11,26 @@ spec:
     targetRevision: 3.5.2 # mets la version Helm Kyverno que tu veux utiliser
     helm:
       releaseName: kyverno
+      values: |
+        features:
+          policyReports:
+            enabled: true
+
+        admissionController:
+          serviceMonitor:
+            enabled: true
+
+        backgroundController:
+          serviceMonitor:
+            enabled: true
+
+        cleanupController:
+          serviceMonitor:
+            enabled: true
+
+        reportsController:
+          serviceMonitor:
+            enabled: true
   destination:
     server: https://kubernetes.default.svc
     namespace: kyverno
