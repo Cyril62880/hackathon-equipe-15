@@ -11,9 +11,9 @@ spec:
     app.kubernetes.io/name: alnoria
     app.kubernetes.io/component: database
   ports:
-    - name: postgres
-      port: 5432
-      targetPort: postgres
+    - name: mysql
+      port: 3306
+      targetPort: mysql
 ---
 apiVersion: apps/v1
 kind: StatefulSet
@@ -40,32 +40,37 @@ spec:
           image: kasperski777/alnoria-db:latest
           imagePullPolicy: Always
           ports:
-            - name: postgres
-              containerPort: 5432
+            - name: mysql
+              containerPort: 3306
           env:
-            - name: POSTGRES_USER
+            - name: MARIADB_DATABASE
               valueFrom:
                 secretKeyRef:
                   name: alnoria-db-secret
-                  key: POSTGRES_USER
-            - name: POSTGRES_PASSWORD
+                  key: MARIADB_DATABASE
+            - name: MARIADB_USER
               valueFrom:
                 secretKeyRef:
                   name: alnoria-db-secret
-                  key: POSTGRES_PASSWORD
-            - name: POSTGRES_DB
+                  key: MARIADB_USER
+            - name: MARIADB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: alnoria-db-secret
-                  key: POSTGRES_DB
+                  key: MARIADB_PASSWORD
+            - name: MARIADB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: alnoria-db-secret
+                  key: MARIADB_ROOT_PASSWORD
           readinessProbe:
             tcpSocket:
-              port: postgres
+              port: mysql
             initialDelaySeconds: 10
             periodSeconds: 10
           livenessProbe:
             tcpSocket:
-              port: postgres
+              port: mysql
             initialDelaySeconds: 30
             periodSeconds: 20
           resources:
@@ -82,7 +87,7 @@ spec:
                 - ALL
           volumeMounts:
             - name: data
-              mountPath: /var/lib/postgresql/data
+              mountPath: /var/lib/mysql
   volumeClaimTemplates:
     - metadata:
         name: data

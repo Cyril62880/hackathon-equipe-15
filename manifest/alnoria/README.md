@@ -18,7 +18,7 @@ Cette application est declaree dans Argo CD par `apps/alnoria.yaml`.
 
 - `alnoria-web:80` vers le conteneur web en `3000`
 - `alnoria-api:8080`
-- `alnoria-db:5432`
+- `alnoria-db:3306`
 
 ## Test local
 

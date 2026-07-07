@@ -15,8 +15,11 @@ patches:
       name: alnoria-db-secret
     patch: |
       - op: replace
-        path: /stringData/POSTGRES_PASSWORD
+        path: /stringData/MARIADB_PASSWORD
         value: change-me-alnoria-dev
       - op: replace
-        path: /stringData/SPRING_DATASOURCE_PASSWORD
+        path: /stringData/MARIADB_ROOT_PASSWORD
+        value: change-me-alnoria-root-dev
+      - op: replace
+        path: /stringData/DB_PASSWORD
         value: change-me-alnoria-dev
