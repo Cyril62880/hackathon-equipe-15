@@ -73,7 +73,14 @@ async function main(argv) {
   console.log('→ Appel OVH AI Endpoints pour proposer un correctif…');
   const { OvhAiClient } = await import('./ovhAi.js');
   const client = new OvhAiClient();
-  const fixed = await client.proposeFix(manifestYaml, summary);
+  let fixed;
+  try {
+    fixed = await client.proposeFix(manifestYaml, summary);
+  } catch (aiErr) {
+    console.error(`OVH AI error: ${aiErr.message}`);
+    console.error(`code=${aiErr.code} status=${aiErr.status} cause=${aiErr.cause?.message ?? aiErr.cause}`);
+    throw aiErr;
+  }
 
   if (opts.dryRun) {
     console.log('\n===== MANIFESTE CORRIGÉ (dry-run, aucune PR ouverte) =====\n');
