@@ -1,0 +1,36 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: prod-alnoria
+resources:
+  - ../../base
+  - namespace.yaml
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: alnoria
+      env: prod
+    includeSelectors: true
+patches:
+  - target:
+      kind: Deployment
+      name: alnoria-api
+    patch: |
+      - op: replace
+        path: /spec/replicas
+        value: 2
+  - target:
+      kind: Deployment
+      name: alnoria-web
+    patch: |
+      - op: replace
+        path: /spec/replicas
+        value: 2
+  - target:
+      kind: Secret
+      name: alnoria-db-secret
+    patch: |
+      - op: replace
+        path: /stringData/POSTGRES_PASSWORD
+        value: change-me-alnoria-prod
+      - op: replace
+        path: /stringData/SPRING_DATASOURCE_PASSWORD
+        value: change-me-alnoria-prod

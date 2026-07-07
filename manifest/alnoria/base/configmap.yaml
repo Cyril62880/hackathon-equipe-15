@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: alnoria-config
+  labels:
+    app.kubernetes.io/name: alnoria
+data:
+  API_PORT: "8080"
+  WEB_PORT: "80"
+  DB_HOST: "alnoria-db"
+  DB_PORT: "5432"
+  DB_NAME: "alnoria"
+  SPRING_PROFILES_ACTIVE: "kubernetes"
+  SPRING_DATASOURCE_URL: "jdbc:postgresql://alnoria-db:5432/alnoria"
+  API_INTERNAL_URL: "http://alnoria-api:8080"
+  API_PUBLIC_URL: "/api"
+  VITE_API_URL: "/api"
+  REACT_APP_API_URL: "/api"
+  NEXT_PUBLIC_API_URL: "/api"

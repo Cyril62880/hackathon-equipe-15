@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: acc-alnoria
+resources:
+  - ../../base
+  - namespace.yaml
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: alnoria
+      env: acc
+    includeSelectors: true
+patches:
+  - target:
+      kind: Secret
+      name: alnoria-db-secret
+    patch: |
+      - op: replace
+        path: /stringData/POSTGRES_PASSWORD
+        value: change-me-alnoria-acc
+      - op: replace
+        path: /stringData/SPRING_DATASOURCE_PASSWORD
+        value: change-me-alnoria-acc
