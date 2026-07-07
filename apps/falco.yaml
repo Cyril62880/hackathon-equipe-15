@@ -30,7 +30,7 @@ spec:
           create: true
 
         driver:
-          enabled: true
+          kind: modern_ebpf
 
         collectors:
           kubernetes:
