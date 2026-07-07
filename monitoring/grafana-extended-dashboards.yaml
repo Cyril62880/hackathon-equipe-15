@@ -1,0 +1,108 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-cluster-global
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+  annotations:
+    grafana_folder: Hackathon Equipe 15
+data:
+  cluster-global-overview.json: |-
+    {
+      "uid": "cluster-global-overview",
+      "title": "Cluster - Etat global",
+      "tags": ["cluster", "availability", "capacity"],
+      "timezone": "",
+      "schemaVersion": 39,
+      "refresh": "30s",
+      "time": {"from": "now-6h", "to": "now"},
+      "templating": {"list": [
+        {"name": "namespace", "label": "Namespace", "type": "query", "datasource": {"type": "prometheus", "uid": "prometheus"}, "definition": "label_values(kube_namespace_status_phase, namespace)", "query": {"query": "label_values(kube_namespace_status_phase, namespace)"}, "includeAll": true, "multi": true, "current": {"selected": true, "text": "All", "value": "$__all"}, "refresh": 1, "sort": 1}
+      ]},
+      "panels": [
+        {"id": 1, "type": "stat", "title": "Nodes ready", "gridPos": {"x": 0, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kube_node_status_condition{condition=\"Ready\",status=\"true\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "red"}, {"color": "green", "value": 1}]}}}},
+        {"id": 2, "type": "stat", "title": "Nodes not ready", "gridPos": {"x": 4, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "(count(kube_node_info) - sum(kube_node_status_condition{condition=\"Ready\",status=\"true\"})) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "red", "value": 1}]}}}},
+        {"id": 3, "type": "stat", "title": "Pods running", "gridPos": {"x": 8, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kube_pod_status_phase{namespace=~\"$namespace\",phase=\"Running\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}]}}}},
+        {"id": 4, "type": "stat", "title": "Pods unhealthy", "gridPos": {"x": 12, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kube_pod_status_phase{namespace=~\"$namespace\",phase=~\"Pending|Failed|Unknown\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}, {"color": "red", "value": 5}]}}}},
+        {"id": 5, "type": "stat", "title": "Restarts - 1h", "gridPos": {"x": 16, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(increase(kube_pod_container_status_restarts_total{namespace=~\"$namespace\"}[1h])) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}, {"color": "red", "value": 10}]}}}},
+        {"id": 6, "type": "stat", "title": "Targets down", "gridPos": {"x": 20, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(up == 0) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "red", "value": 1}]}}}},
+        {"id": 7, "type": "timeseries", "title": "CPU utilise par namespace", "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum by (namespace) (rate(container_cpu_usage_seconds_total{namespace=~\"$namespace\",container!=\"\",image!=\"\"}[5m]))", "legendFormat": "{{namespace}}"}], "fieldConfig": {"defaults": {"unit": "cores"}}},
+        {"id": 8, "type": "timeseries", "title": "Memoire utilisee par namespace", "gridPos": {"x": 12, "y": 4, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum by (namespace) (container_memory_working_set_bytes{namespace=~\"$namespace\",container!=\"\",image!=\"\"})", "legendFormat": "{{namespace}}"}], "fieldConfig": {"defaults": {"unit": "bytes"}}},
+        {"id": 9, "type": "table", "title": "Top pods CPU", "gridPos": {"x": 0, "y": 12, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "topk(15, sum by (namespace, pod) (rate(container_cpu_usage_seconds_total{namespace=~\"$namespace\",container!=\"\",image!=\"\"}[5m])))", "format": "table", "instant": true}]},
+        {"id": 10, "type": "table", "title": "Top pods memoire", "gridPos": {"x": 12, "y": 12, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "topk(15, sum by (namespace, pod) (container_memory_working_set_bytes{namespace=~\"$namespace\",container!=\"\",image!=\"\"}))", "format": "table", "instant": true}]},
+        {"id": 11, "type": "table", "title": "Pods non-running", "gridPos": {"x": 0, "y": 20, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "kube_pod_status_phase{namespace=~\"$namespace\",phase=~\"Pending|Failed|Unknown\"} == 1", "format": "table", "instant": true}]},
+        {"id": 12, "type": "table", "title": "Persistent volumes non disponibles", "gridPos": {"x": 12, "y": 20, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "kube_persistentvolume_status_phase{phase=~\"Failed|Pending|Released\"} == 1", "format": "table", "instant": true}]}
+      ]
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-availability-workloads
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+  annotations:
+    grafana_folder: Hackathon Equipe 15
+data:
+  availability-workloads.json: |-
+    {
+      "uid": "availability-workloads",
+      "title": "Disponibilite - Workloads",
+      "tags": ["availability", "workloads", "slo"],
+      "timezone": "",
+      "schemaVersion": 39,
+      "refresh": "30s",
+      "time": {"from": "now-6h", "to": "now"},
+      "templating": {"list": [
+        {"name": "namespace", "label": "Namespace", "type": "query", "datasource": {"type": "prometheus", "uid": "prometheus"}, "definition": "label_values(kube_namespace_status_phase, namespace)", "query": {"query": "label_values(kube_namespace_status_phase, namespace)"}, "includeAll": true, "multi": true, "current": {"selected": true, "text": "All", "value": "$__all"}, "refresh": 1, "sort": 1}
+      ]},
+      "panels": [
+        {"id": 1, "type": "stat", "title": "Deployments indisponibles", "gridPos": {"x": 0, "y": 0, "w": 6, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kube_deployment_status_replicas_unavailable{namespace=~\"$namespace\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}, {"color": "red", "value": 3}]}}}},
+        {"id": 2, "type": "stat", "title": "DaemonSets misscheduled/unavailable", "gridPos": {"x": 6, "y": 0, "w": 6, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "(sum(kube_daemonset_status_number_unavailable{namespace=~\"$namespace\"}) + sum(kube_daemonset_status_number_misscheduled{namespace=~\"$namespace\"})) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "red", "value": 1}]}}}},
+        {"id": 3, "type": "stat", "title": "StatefulSets replicas manquantes", "gridPos": {"x": 12, "y": 0, "w": 6, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kube_statefulset_replicas{namespace=~\"$namespace\"} - kube_statefulset_status_replicas_ready{namespace=~\"$namespace\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "red", "value": 1}]}}}},
+        {"id": 4, "type": "stat", "title": "Containers waiting", "gridPos": {"x": 18, "y": 0, "w": 6, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kube_pod_container_status_waiting{namespace=~\"$namespace\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}, {"color": "red", "value": 5}]}}}},
+        {"id": 5, "type": "timeseries", "title": "Disponibilite pods par phase", "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum by (phase) (kube_pod_status_phase{namespace=~\"$namespace\"})", "legendFormat": "{{phase}}"}]},
+        {"id": 6, "type": "timeseries", "title": "Restarts par namespace - 6h", "gridPos": {"x": 12, "y": 4, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum by (namespace) (increase(kube_pod_container_status_restarts_total{namespace=~\"$namespace\"}[6h]))", "legendFormat": "{{namespace}}"}]},
+        {"id": 7, "type": "table", "title": "Deployments avec replicas indisponibles", "gridPos": {"x": 0, "y": 12, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "kube_deployment_status_replicas_unavailable{namespace=~\"$namespace\"} > 0", "format": "table", "instant": true}]},
+        {"id": 8, "type": "table", "title": "Pods qui redemarrent le plus - 6h", "gridPos": {"x": 12, "y": 12, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "topk(20, sum by (namespace, pod, container) (increase(kube_pod_container_status_restarts_total{namespace=~\"$namespace\"}[6h])))", "format": "table", "instant": true}]},
+        {"id": 9, "type": "table", "title": "Containers en attente par raison", "gridPos": {"x": 0, "y": 20, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "kube_pod_container_status_waiting_reason{namespace=~\"$namespace\"} == 1", "format": "table", "instant": true}]},
+        {"id": 10, "type": "table", "title": "Dernieres terminaisons anormales", "gridPos": {"x": 12, "y": 20, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "kube_pod_container_status_last_terminated_reason{namespace=~\"$namespace\",reason!=\"Completed\"} == 1", "format": "table", "instant": true}]}
+      ]
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-cybersecurity-posture
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+  annotations:
+    grafana_folder: Hackathon Equipe 15
+data:
+  cybersecurity-posture.json: |-
+    {
+      "uid": "cybersecurity-posture",
+      "title": "Cybersecurite - Posture concrete",
+      "tags": ["security", "trivy", "kyverno", "falco", "argocd"],
+      "timezone": "",
+      "schemaVersion": 39,
+      "refresh": "30s",
+      "time": {"from": "now-6h", "to": "now"},
+      "panels": [
+        {"id": 1, "type": "stat", "title": "CVE critical", "gridPos": {"x": 0, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(trivy_image_vulnerabilities{severity=\"CRITICAL\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "red", "value": 1}]}}}},
+        {"id": 2, "type": "stat", "title": "CVE high", "gridPos": {"x": 4, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(trivy_image_vulnerabilities{severity=\"HIGH\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}, {"color": "red", "value": 20}]}}}},
+        {"id": 3, "type": "stat", "title": "Kyverno fail/error", "gridPos": {"x": 8, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kyverno_policy_results_total{result=~\"fail|error|warn\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}, {"color": "red", "value": 10}]}}}},
+        {"id": 4, "type": "stat", "title": "Falco events - 1h", "gridPos": {"x": 12, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(increase(falco_events_total[1h])) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}, {"color": "red", "value": 5}]}}}},
+        {"id": 5, "type": "stat", "title": "Argo apps out-of-sync", "gridPos": {"x": 16, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(argocd_app_info{sync_status!=\"Synced\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "red", "value": 1}]}}}},
+        {"id": 6, "type": "stat", "title": "Prometheus alerts firing", "gridPos": {"x": 20, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(ALERTS{alertstate=\"firing\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}, {"color": "red", "value": 5}]}}}},
+        {"id": 7, "type": "timeseries", "title": "Vulnerabilites par severite", "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum by (severity) (trivy_image_vulnerabilities)", "legendFormat": "{{severity}}"}]},
+        {"id": 8, "type": "timeseries", "title": "Resultats Kyverno par statut", "gridPos": {"x": 12, "y": 4, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum by (result) (kyverno_policy_results_total)", "legendFormat": "{{result}}"}]},
+        {"id": 9, "type": "table", "title": "Top images vulnerables", "gridPos": {"x": 0, "y": 12, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "topk(20, sum by (namespace, image_repository, image_tag, severity) (trivy_image_vulnerabilities))", "format": "table", "instant": true}]},
+        {"id": 10, "type": "table", "title": "Policies Kyverno en echec", "gridPos": {"x": 12, "y": 12, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "topk(20, sum by (namespace, policy, rule, result) (kyverno_policy_results_total{result=~\"fail|error|warn\"}))", "format": "table", "instant": true}]},
+        {"id": 11, "type": "table", "title": "Applications Argo CD non conformes", "gridPos": {"x": 0, "y": 20, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "argocd_app_info{sync_status!=\"Synced\"} or argocd_app_info{health_status!=\"Healthy\"}", "format": "table", "instant": true}]},
+        {"id": 12, "type": "table", "title": "Alertes actives", "gridPos": {"x": 12, "y": 20, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "ALERTS{alertstate=\"firing\"}", "format": "table", "instant": true}]}
+      ]
+    }

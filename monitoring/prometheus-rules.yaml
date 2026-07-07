@@ -1,0 +1,85 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PrometheusRule
+metadata:
+  name: hackathon-cluster-security-rules
+  namespace: monitoring
+  labels:
+    app.kubernetes.io/part-of: hackathon-monitoring
+spec:
+  groups:
+    - name: hackathon.cluster.availability
+      rules:
+        - alert: HackathonNodeNotReady
+          expr: count(kube_node_info) - sum(kube_node_status_condition{condition="Ready",status="true"}) > 0
+          for: 5m
+          labels:
+            severity: critical
+            category: availability
+          annotations:
+            summary: "Un ou plusieurs nodes Kubernetes ne sont pas Ready"
+            description: "Au moins un node du cluster OVH est absent de l'etat Ready depuis plus de 5 minutes."
+        - alert: HackathonPodsUnhealthy
+          expr: sum(kube_pod_status_phase{phase=~"Pending|Failed|Unknown"}) > 0
+          for: 10m
+          labels:
+            severity: warning
+            category: availability
+          annotations:
+            summary: "Pods Kubernetes non sains"
+            description: "Des pods sont en Pending, Failed ou Unknown depuis plus de 10 minutes."
+        - alert: HackathonDeploymentUnavailable
+          expr: sum(kube_deployment_status_replicas_unavailable) > 0
+          for: 10m
+          labels:
+            severity: warning
+            category: availability
+          annotations:
+            summary: "Deployments avec replicas indisponibles"
+            description: "Au moins un Deployment n'a pas tous ses replicas disponibles."
+        - alert: HackathonContainerRestartsHigh
+          expr: sum(increase(kube_pod_container_status_restarts_total[15m])) > 5
+          for: 5m
+          labels:
+            severity: warning
+            category: reliability
+          annotations:
+            summary: "Redemarrages de containers eleves"
+            description: "Plus de 5 redemarrages containers detectes sur 15 minutes."
+    - name: hackathon.security.gitops
+      rules:
+        - alert: HackathonTrivyCriticalVulnerabilities
+          expr: sum(trivy_image_vulnerabilities{severity="CRITICAL"}) > 0
+          for: 5m
+          labels:
+            severity: critical
+            category: security
+          annotations:
+            summary: "Vulnerabilites CRITICAL detectees par Trivy"
+            description: "Trivy expose au moins une vulnerabilite critique sur les workloads scannes."
+        - alert: HackathonKyvernoPolicyFailures
+          expr: sum(kyverno_policy_results_total{result=~"fail|error|warn"}) > 0
+          for: 5m
+          labels:
+            severity: warning
+            category: security
+          annotations:
+            summary: "Policies Kyverno en echec"
+            description: "Kyverno expose des resultats fail, error ou warn."
+        - alert: HackathonFalcoRuntimeEvents
+          expr: sum(increase(falco_events_total[10m])) > 0
+          for: 1m
+          labels:
+            severity: warning
+            category: runtime-security
+          annotations:
+            summary: "Evenements runtime Falco detectes"
+            description: "Falco a detecte au moins un evenement runtime sur les 10 dernieres minutes."
+        - alert: HackathonArgoCDOutOfSync
+          expr: sum(argocd_app_info{sync_status!="Synced"}) > 0
+          for: 5m
+          labels:
+            severity: warning
+            category: gitops
+          annotations:
+            summary: "Applications Argo CD OutOfSync"
+            description: "Au moins une application Argo CD n'est pas synchronisee avec Git."
