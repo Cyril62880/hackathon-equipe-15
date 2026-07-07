@@ -3,7 +3,7 @@ kind: ServiceAccount
 metadata:
   name: dvwa-sa
   namespace: demo-vulnerable
-automountServiceAccountToken: true
+automountServiceAccountToken: false
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
