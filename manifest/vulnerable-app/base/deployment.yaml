@@ -14,47 +14,47 @@ spec:
     metadata:
       labels:
         app: vulnerable-web
+      annotations:
+        seccomp.security.alpha.kubernetes.io/pod: runtime/default
     spec:
-      hostNetwork: false
       serviceAccountName: dvwa-sa
-      automountServiceAccountToken: true
+      automountServiceAccountToken: false
       containers:
         - name: dvwa
-          image: vulnerables/web-dvwa:latest
-          imagePullPolicy: Always
+          image: vulnerables/web-dvwa:1.0.0
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
           securityContext:
-            privileged: true
-            allowPrivilegeEscalation: true
-            runAsNonRoot: false
-            runAsUser: 0
-            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            runAsUser: 1000
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
             capabilities:
-              add:
-                - NET_ADMIN
-                - SYS_ADMIN
+              drop:
+                - ALL
+            seccompProfile:
+              type: RuntimeDefault
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
           env:
             - name: MYSQL_ROOT_PASSWORD
-              value: "root"
+              valueFrom:
+                secretKeyRef:
+                  name: mysql-secret
+                  key: root-password
             - name: AWS_ACCESS_KEY_ID
-              value: "AKIAIOSFODNN7EXAMPLE"
+              valueFrom:
+                secretKeyRef:
+                  name: aws-credentials
+                  key: access-key-id
             - name: AWS_SECRET_ACCESS_KEY
-              value: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-          volumeMounts:
-            - name: host-root
-              mountPath: /host
-            - name: leaked-kubeconfig
-              mountPath: /root/.kube
-              readOnly: true
-      volumes:
-        - name: host-root
-          hostPath:
-            path: /
-            type: Directory
-        - name: leaked-kubeconfig
-          secret:
-            secretName: leaked-kubeconfig
-            items:
-              - key: config
-                path: config
+              valueFrom:
+                secretKeyRef:
+                  name: aws-credentials
+                  key: secret-access-key
