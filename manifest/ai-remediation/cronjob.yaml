@@ -34,6 +34,8 @@ spec:
                 - "--from-cluster"
                 - "--target"
                 - "manifest/vulnerable-app/base/deployment.yaml"
+                - "manifest/vulnerable-app/base/rbac.yaml"
+                - "manifest/vulnerable-app/base/leaked-secret.yaml"
                 - "--repo"
                 - "Cyril62880/hackathon-equipe-15"
                 - "--base-branch"

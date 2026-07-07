@@ -7,7 +7,7 @@ import * as reportParser from './reportParser.js';
 function parseArgs(argv) {
   const program = new Command();
   program
-    .requiredOption('--target <path>', 'Manifeste à corriger (relatif à la racine du repo)')
+    .requiredOption('--target <path...>', 'Manifeste(s) à corriger (relatifs à la racine du repo)')
     .option('--reports-dir <dir>', 'Dossier des rapports JSON exportés')
     .option('--from-cluster', 'Lire les rapports Trivy/Kyverno via l\'API Kubernetes')
     .option('--repo <owner/repo>', 'Dépôt GitHub (obligatoire hors --dry-run)')
@@ -27,15 +27,15 @@ function parseArgs(argv) {
   return opts;
 }
 
-async function loadTarget(opts) {
-  if (fs.existsSync(opts.target)) {
-    return fs.readFileSync(opts.target, 'utf-8');
+async function loadTarget(filePath, opts) {
+  if (fs.existsSync(filePath)) {
+    return fs.readFileSync(filePath, 'utf-8');
   }
   if (!opts.repo) {
-    throw new Error(`${opts.target} introuvable localement et --repo non fourni.`);
+    throw new Error(`${filePath} introuvable localement et --repo non fourni.`);
   }
   const { fetchFile } = await import('./githubPr.js');
-  return fetchFile(opts.repo, opts.target, opts.baseBranch);
+  return fetchFile(opts.repo, filePath, opts.baseBranch);
 }
 
 async function collectFindings(opts) {
@@ -46,11 +46,10 @@ async function collectFindings(opts) {
 async function main(argv) {
   const opts = parseArgs(argv);
 
-  const manifestYaml = await loadTarget(opts);
+  // Normalise --target to always be an array
+  const targets = Array.isArray(opts.target) ? opts.target : [opts.target];
 
-  console.log(
-    `→ Collecte des findings (${opts.fromCluster ? 'cluster' : opts.reportsDir})…`,
-  );
+  console.log(`→ Collecte des findings (${opts.fromCluster ? 'cluster' : opts.reportsDir})…`);
   let findings = await collectFindings(opts);
 
   if (opts.focus) {
@@ -70,22 +69,43 @@ async function main(argv) {
   const summary = reportParser.summarize(findings);
   console.log(`→ ${findings.length} findings collectés.\n${summary}\n`);
 
-  console.log('→ Appel OVH AI Endpoints pour proposer un correctif…');
   const { OvhAiClient } = await import('./ovhAi.js');
   const client = new OvhAiClient();
-  let fixed;
-  try {
-    fixed = await client.proposeFix(manifestYaml, summary);
-  } catch (aiErr) {
-    console.error(`OVH AI error: ${aiErr.message}`);
-    console.error(`code=${aiErr.code} status=${aiErr.status} cause=${aiErr.cause?.message ?? aiErr.cause}`);
-    throw aiErr;
+
+  const fixedFiles = [];
+  for (const target of targets) {
+    console.log(`→ [${target}] Chargement du manifeste…`);
+    let manifestYaml;
+    try {
+      manifestYaml = await loadTarget(target, opts);
+    } catch (err) {
+      console.error(`  ⚠ Impossible de charger ${target}: ${err.message}`);
+      continue;
+    }
+
+    console.log(`→ [${target}] Appel OVH AI Endpoints…`);
+    let fixed;
+    try {
+      fixed = await client.proposeFix(manifestYaml, summary);
+    } catch (aiErr) {
+      console.error(`OVH AI error (${target}): ${aiErr.message}`);
+      console.error(`code=${aiErr.code} status=${aiErr.status} cause=${aiErr.cause?.message ?? aiErr.cause}`);
+      continue;
+    }
+
+    if (opts.dryRun) {
+      console.log(`\n===== MANIFESTE CORRIGÉ : ${target} =====\n`);
+      console.log(fixed);
+    } else {
+      fixedFiles.push({ filePath: target, newContent: fixed });
+    }
   }
 
-  if (opts.dryRun) {
-    console.log('\n===== MANIFESTE CORRIGÉ (dry-run, aucune PR ouverte) =====\n');
-    console.log(fixed);
-    return 0;
+  if (opts.dryRun) return 0;
+
+  if (fixedFiles.length === 0) {
+    console.error('Aucun fichier corrigé à commiter.');
+    return 1;
   }
 
   if (!opts.repo) {
@@ -94,12 +114,11 @@ async function main(argv) {
   }
 
   const { openRemediationPr } = await import('./githubPr.js');
-  console.log('→ Ouverture de la Pull Request de remédiation…');
+  console.log(`→ Ouverture de la Pull Request de remédiation (${fixedFiles.length} fichier(s))…`);
   try {
     const url = await openRemediationPr({
       repoFullName: opts.repo,
-      filePath: opts.target,
-      newContent: fixed,
+      files: fixedFiles,
       baseBranch: opts.baseBranch,
     });
     console.log(`✅ Pull Request ouverte : ${url}`);
