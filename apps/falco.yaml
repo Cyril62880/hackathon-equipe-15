@@ -15,18 +15,17 @@ spec:
         tty: true
 
         falco:
-          jsonOutput: true
-          logLevel: info
+          json_output: true
+          log_level: info
           metrics:
             enabled: true
             interval: 1m
-            outputRule: true
-            rulesCountersEnabled: true
-            resourceUtilizationEnabled: true
-            stateCountersEnabled: true
-
-        webserver:
-          prometheusMetricsEnabled: true
+            output_rule: true
+            rules_counters_enabled: true
+            resource_utilization_enabled: true
+            state_counters_enabled: true
+          webserver:
+            prometheus_metrics_enabled: true
 
         serviceMonitor:
           create: true
