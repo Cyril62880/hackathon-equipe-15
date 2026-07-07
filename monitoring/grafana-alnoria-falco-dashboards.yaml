@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-falco-runtime-events
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+  annotations:
+    grafana_folder: Hackathon Equipe 15
+data:
+  falco-runtime-events.json: |-
+    {
+      "uid": "falco-runtime-events",
+      "title": "Falco - Runtime events",
+      "tags": ["falco", "runtime", "security"],
+      "timezone": "",
+      "schemaVersion": 39,
+      "refresh": "30s",
+      "time": {"from": "now-6h", "to": "now"},
+      "panels": [
+        {"id": 1, "type": "stat", "title": "Falco events total", "gridPos": {"x": 0, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(falcosecurity_falcosidekick_falco_events_total) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}, {"color": "red", "value": 20}]}}}},
+        {"id": 2, "type": "stat", "title": "Events - 1h", "gridPos": {"x": 4, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(increase(falcosecurity_falcosidekick_falco_events_total[1h])) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}, {"color": "red", "value": 10}]}}}},
+        {"id": 3, "type": "stat", "title": "Falco nodes scraped", "gridPos": {"x": 8, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(up{namespace=\"falco\",service=\"falco-metrics\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "red"}, {"color": "orange", "value": 1}, {"color": "green", "value": 3}]}}}},
+        {"id": 4, "type": "stat", "title": "Kernel drops/s", "gridPos": {"x": 12, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(rate(falcosecurity_scap_n_drops_total[5m])) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "ops", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "red", "value": 1}]}}}},
+        {"id": 5, "type": "stat", "title": "Sidekick accepted - 1h", "gridPos": {"x": 16, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(increase(falcosecurity_falcosidekick_inputs_total{status=\"accepted\"}[1h])) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}]}}}},
+        {"id": 6, "type": "stat", "title": "Active Falco pods", "gridPos": {"x": 20, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kube_pod_status_ready{namespace=\"falco\",pod=~\"falco-[a-z0-9]+\",condition=\"true\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "red"}, {"color": "green", "value": 3}]}}}},
+        {"id": 7, "type": "timeseries", "title": "Events by priority", "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum by (priority_raw) (increase(falcosecurity_falcosidekick_falco_events_total[5m]))", "legendFormat": "{{priority_raw}}"}], "fieldConfig": {"defaults": {"unit": "short"}}},
+        {"id": 8, "type": "timeseries", "title": "Falco CPU and memory", "gridPos": {"x": 12, "y": 4, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "falcosecurity_falco_cpu_usage_ratio", "legendFormat": "cpu {{pod}}"}, {"refId": "B", "expr": "falcosecurity_falco_memory_rss_bytes", "legendFormat": "rss {{pod}}"}], "fieldConfig": {"defaults": {"unit": "short"}}},
+        {"id": 9, "type": "table", "title": "Top triggered rules - 6h", "gridPos": {"x": 0, "y": 12, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "topk(15, sum by (rule, priority_raw, source) (increase(falcosecurity_falcosidekick_falco_events_total[6h])))", "format": "table", "instant": true}]},
+        {"id": 10, "type": "table", "title": "Events by namespace and pod - 6h", "gridPos": {"x": 12, "y": 12, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "topk(20, sum by (k8s_ns_name, k8s_pod_name, rule) (increase(falcosecurity_falcosidekick_falco_events_total[6h])))", "format": "table", "instant": true}]}
+      ]
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboard-alnoria-application
+  namespace: monitoring
+  labels:
+    grafana_dashboard: "1"
+  annotations:
+    grafana_folder: Hackathon Equipe 15
+data:
+  alnoria-application.json: |-
+    {
+      "uid": "alnoria-application",
+      "title": "Alnoria - Application & Database",
+      "tags": ["alnoria", "application", "database", "kubernetes"],
+      "timezone": "",
+      "schemaVersion": 39,
+      "refresh": "30s",
+      "time": {"from": "now-6h", "to": "now"},
+      "templating": {"list": [
+        {"name": "namespace", "label": "Environment", "type": "query", "datasource": {"type": "prometheus", "uid": "prometheus"}, "definition": "label_values(kube_namespace_status_phase{namespace=~\"dev-alnoria|acc-alnoria|prod-alnoria\"}, namespace)", "query": {"query": "label_values(kube_namespace_status_phase{namespace=~\"dev-alnoria|acc-alnoria|prod-alnoria\"}, namespace)"}, "includeAll": true, "multi": true, "current": {"selected": false, "text": "dev-alnoria", "value": "dev-alnoria"}, "refresh": 1, "sort": 1}
+      ]},
+      "panels": [
+        {"id": 1, "type": "stat", "title": "API replicas ready", "gridPos": {"x": 0, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kube_deployment_status_replicas_available{namespace=~\"$namespace\",deployment=\"alnoria-api\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "red"}, {"color": "green", "value": 1}]}}}},
+        {"id": 2, "type": "stat", "title": "Web replicas ready", "gridPos": {"x": 4, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kube_deployment_status_replicas_available{namespace=~\"$namespace\",deployment=\"alnoria-web\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "red"}, {"color": "green", "value": 1}]}}}},
+        {"id": 3, "type": "stat", "title": "MariaDB ready", "gridPos": {"x": 8, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kube_statefulset_status_replicas_ready{namespace=~\"$namespace\",statefulset=\"alnoria-db\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "red"}, {"color": "green", "value": 1}]}}}},
+        {"id": 4, "type": "stat", "title": "Unhealthy pods", "gridPos": {"x": 12, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kube_pod_status_phase{namespace=~\"$namespace\",pod=~\"alnoria-.*\",phase=~\"Pending|Failed|Unknown\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "red", "value": 1}]}}}},
+        {"id": 5, "type": "stat", "title": "Restarts - 1h", "gridPos": {"x": 16, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(increase(kube_pod_container_status_restarts_total{namespace=~\"$namespace\",pod=~\"alnoria-.*\"}[1h])) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "short", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}, {"color": "orange", "value": 1}, {"color": "red", "value": 5}]}}}},
+        {"id": 6, "type": "stat", "title": "DB storage used", "gridPos": {"x": 20, "y": 0, "w": 4, "h": 4}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum(kubelet_volume_stats_used_bytes{namespace=~\"$namespace\",persistentvolumeclaim=\"data-alnoria-db-0\"}) or vector(0)"}], "fieldConfig": {"defaults": {"unit": "bytes", "thresholds": {"mode": "absolute", "steps": [{"color": "green"}]}}}},
+        {"id": 7, "type": "timeseries", "title": "Network requests in/s - API/Web", "gridPos": {"x": 0, "y": 4, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum by (namespace, pod) (rate(container_network_receive_packets_total{namespace=~\"$namespace\",pod=~\"alnoria-api.*|alnoria-web.*\"}[5m]))", "legendFormat": "{{namespace}}/{{pod}}"}], "fieldConfig": {"defaults": {"unit": "pps"}}},
+        {"id": 8, "type": "timeseries", "title": "Traffic bytes/s - API/Web", "gridPos": {"x": 12, "y": 4, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum by (namespace, pod) (rate(container_network_receive_bytes_total{namespace=~\"$namespace\",pod=~\"alnoria-api.*|alnoria-web.*\"}[5m]))", "legendFormat": "in {{namespace}}/{{pod}}"}, {"refId": "B", "expr": "sum by (namespace, pod) (rate(container_network_transmit_bytes_total{namespace=~\"$namespace\",pod=~\"alnoria-api.*|alnoria-web.*\"}[5m]))", "legendFormat": "out {{namespace}}/{{pod}}"}], "fieldConfig": {"defaults": {"unit": "Bps"}}},
+        {"id": 9, "type": "timeseries", "title": "CPU by pod", "gridPos": {"x": 0, "y": 12, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum by (namespace, pod) (rate(container_cpu_usage_seconds_total{namespace=~\"$namespace\",pod=~\"alnoria-.*\",container!=\"\",image!=\"\"}[5m]))", "legendFormat": "{{namespace}}/{{pod}}"}], "fieldConfig": {"defaults": {"unit": "cores"}}},
+        {"id": 10, "type": "timeseries", "title": "Memory by pod", "gridPos": {"x": 12, "y": 12, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "sum by (namespace, pod) (container_memory_working_set_bytes{namespace=~\"$namespace\",pod=~\"alnoria-.*\",container!=\"\",image!=\"\"})", "legendFormat": "{{namespace}}/{{pod}}"}], "fieldConfig": {"defaults": {"unit": "bytes"}}},
+        {"id": 11, "type": "timeseries", "title": "MariaDB PVC used vs capacity", "gridPos": {"x": 0, "y": 20, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "kubelet_volume_stats_used_bytes{namespace=~\"$namespace\",persistentvolumeclaim=\"data-alnoria-db-0\"}", "legendFormat": "used {{namespace}}"}, {"refId": "B", "expr": "kubelet_volume_stats_capacity_bytes{namespace=~\"$namespace\",persistentvolumeclaim=\"data-alnoria-db-0\"}", "legendFormat": "capacity {{namespace}}"}], "fieldConfig": {"defaults": {"unit": "bytes"}}},
+        {"id": 12, "type": "table", "title": "Pods and containers", "gridPos": {"x": 12, "y": 20, "w": 12, "h": 8}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "kube_pod_container_info{namespace=~\"$namespace\",pod=~\"alnoria-.*\"}", "format": "table", "instant": true}]},
+        {"id": 13, "type": "table", "title": "PVC storage details", "gridPos": {"x": 0, "y": 28, "w": 24, "h": 7}, "datasource": {"type": "prometheus", "uid": "prometheus"}, "targets": [{"refId": "A", "expr": "kubelet_volume_stats_used_bytes{namespace=~\"$namespace\",persistentvolumeclaim=\"data-alnoria-db-0\"}", "format": "table", "instant": true}, {"refId": "B", "expr": "kubelet_volume_stats_available_bytes{namespace=~\"$namespace\",persistentvolumeclaim=\"data-alnoria-db-0\"}", "format": "table", "instant": true}, {"refId": "C", "expr": "kube_persistentvolumeclaim_resource_requests_storage_bytes{namespace=~\"$namespace\",persistentvolumeclaim=\"data-alnoria-db-0\"}", "format": "table", "instant": true}]}
+      ]
+    }

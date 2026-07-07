@@ -66,7 +66,7 @@ spec:
             summary: "Policies Kyverno en echec"
             description: "Kyverno expose des resultats fail, error ou warn."
         - alert: HackathonFalcoRuntimeEvents
-          expr: sum(increase(falco_events_total[10m])) > 0
+          expr: sum(increase(falcosecurity_falcosidekick_falco_events_total[10m])) > 0
           for: 1m
           labels:
             severity: warning

@@ -63,7 +63,7 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: falco-metrics
+  name: falcosidekick-metrics
   namespace: monitoring
   labels:
     app.kubernetes.io/part-of: hackathon-monitoring
@@ -73,8 +73,10 @@ spec:
       - falco
   selector:
     matchLabels:
-      app.kubernetes.io/name: falco
+      app.kubernetes.io/instance: falco
+      app.kubernetes.io/name: falcosidekick
   endpoints:
-    - port: metrics
+    - port: http
+      path: /metrics
       interval: 30s
       scrapeTimeout: 10s
