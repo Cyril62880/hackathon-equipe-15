@@ -1,7 +1,3 @@
-// Création automatique d'une branche + Pull Request de remédiation sur GitHub.
-//
-// L'IA ne merge JAMAIS : elle ouvre une PR qu'un humain relit et merge,
-// conformément au brief.
 
 import { Octokit } from '@octokit/rest';
 
@@ -19,7 +15,6 @@ function client(token) {
   return new Octokit({ auth: token });
 }
 
-// Récupère le contenu d'un fichier du repo (pour l'exécution en cluster).
 export async function fetchFile(repoFullName, filePath, ref = 'main', token) {
   const octokit = client(token);
   const { owner, repo } = splitRepo(repoFullName);
@@ -32,8 +27,6 @@ export async function fetchFile(repoFullName, filePath, ref = 'main', token) {
   return Buffer.from(data.content, 'base64').toString('utf-8');
 }
 
-// Ouvre une PR corrigeant `filePath`. Retourne l'URL de la PR.
-// Lève une erreur "NO_CHANGE" si le correctif est identique à l'existant.
 export async function openRemediationPr({
   repoFullName,
   filePath,
@@ -50,10 +43,9 @@ export async function openRemediationPr({
   const stamp = new Date()
     .toISOString()
     .replace(/[-:T]/g, '')
-    .slice(0, 15); // YYYYMMDDHHMMSS
+    .slice(0, 15); 
   const branch = `ai-remediation/${stamp}`;
 
-  // Récupère le blob existant (SHA nécessaire pour un update).
   let currentSha;
   let currentContent;
   try {

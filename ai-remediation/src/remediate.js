@@ -1,22 +1,3 @@
-#!/usr/bin/env node
-// Boucle de remédiation IA : rapports de sécurité → correctif IA → Pull Request.
-//
-// Étapes :
-//   1. Collecte les findings (fichiers JSON exportés OU API Kubernetes en direct).
-//   2. Résume et cible le workload à corriger.
-//   3. Demande un manifeste corrigé à OVH AI Endpoints.
-//   4. Ouvre une Pull Request GitHub (revue humaine + merge → Argo CD resync).
-//
-// Exemples :
-//   # Démo locale sans rien pousser (affiche juste le correctif proposé)
-//   node src/remediate.js --reports-dir ../reports/2026-07-06_15-13-10 \
-//       --target ../manifest/vulnerable-app/deployment.yaml \
-//       --focus demo-vulnerable --dry-run
-//
-//   # En cluster (CronJob) : lit les CRD en direct et ouvre la PR
-//   node src/remediate.js --from-cluster \
-//       --target manifest/vulnerable-app/deployment.yaml \
-//       --repo Cyril62880/hackathon-equipe-15
 
 import fs from 'node:fs';
 import { Command } from 'commander';
@@ -47,7 +28,6 @@ function parseArgs(argv) {
 }
 
 async function loadTarget(opts) {
-  // Fichier local si présent, sinon récupéré depuis GitHub (cas du CronJob en cluster).
   if (fs.existsSync(opts.target)) {
     return fs.readFileSync(opts.target, 'utf-8');
   }
@@ -91,7 +71,7 @@ async function main(argv) {
   console.log(`→ ${findings.length} findings collectés.\n${summary}\n`);
 
   console.log('→ Appel OVH AI Endpoints pour proposer un correctif…');
-  const { OvhAiClient } = await import('./ovhAi.js'); // import tardif : dépend d'openai
+  const { OvhAiClient } = await import('./ovhAi.js');
   const client = new OvhAiClient();
   const fixed = await client.proposeFix(manifestYaml, summary);
 

@@ -1,17 +1,31 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: vulnerable-app
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
-    targetRevision: main
-    path: manifest/vulnerable-app         # ← chemin réel du dossier
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: demo-vulnerable
-  syncPolicy:
-    automated: { prune: true, selfHeal: true }
-    syncOptions: [ CreateNamespace=true ]
+  generators:
+    - list:
+        elements:
+          - env: dev
+          - env: acc
+          - env: prod
+  template:
+    metadata:
+      name: "vulnerable-app-{{env}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/Cyril62880/hackathon-equipe-15.git
+        targetRevision: main
+        path: "manifest/vulnerable-app/overlays/{{env}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{env}}-vulnerable"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+          - ServerSideApply=true

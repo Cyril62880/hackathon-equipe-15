@@ -1,16 +1,7 @@
-// Lecture et normalisation des rapports de sécurité (Trivy + Kyverno).
-//
-// Deux sources possibles :
-//   - fichiers JSON exportés (reports/scripts/export-security-reports.sh) ;
-//   - API Kubernetes en direct (CRD trivy-operator / kyverno).
-//
-// Sortie : une liste plate de "findings" normalisés, prête à résumer pour l'IA.
 
 import fs from 'node:fs';
 import path from 'node:path';
 
-// Un problème de sécurité normalisé, indépendant de l'outil source.
-// { source, namespace, resource, identifier, severity, title, fix, extra }
 
 const SEVERITY_ORDER = { CRITICAL: 0, HIGH: 1, MEDIUM: 2, LOW: 3, UNKNOWN: 4 };
 
@@ -18,9 +9,6 @@ export function severityRank(sev) {
   return SEVERITY_ORDER[(sev || 'UNKNOWN').toUpperCase()] ?? 4;
 }
 
-// --------------------------------------------------------------------------- //
-// Parsing des objets bruts — communs aux deux sources
-// --------------------------------------------------------------------------- //
 function resourceName(meta) {
   const labels = meta.labels || {};
   return labels['trivy-operator.resource.name'] || meta.name || 'unknown';
@@ -90,9 +78,6 @@ function dispatch(kind, item) {
   return [];
 }
 
-// --------------------------------------------------------------------------- //
-// Source 1 : fichiers JSON exportés
-// --------------------------------------------------------------------------- //
 export function fromFiles(reportsDir) {
   const findings = [];
   const files = fs
@@ -101,7 +86,6 @@ export function fromFiles(reportsDir) {
     .sort();
   for (const file of files) {
     const data = JSON.parse(fs.readFileSync(path.join(reportsDir, file), 'utf-8'));
-    // Les exports sont des `kubectl get ... -o json` -> { items: [...] }
     const items = data.items || [data];
     for (const item of items) {
       findings.push(...dispatch(item.kind || file, item));
@@ -120,11 +104,8 @@ export function latestReportsDir(root) {
   return path.join(root, dirs[dirs.length - 1]);
 }
 
-// --------------------------------------------------------------------------- //
-// Source 2 : API Kubernetes en direct (optionnel)
-// --------------------------------------------------------------------------- //
 export async function fromCluster() {
-  const k8s = await import('@kubernetes/client-node'); // dépendance chargée à la demande
+  const k8s = await import('@kubernetes/client-node'); 
   const kc = new k8s.KubeConfig();
   try {
     kc.loadFromCluster();
@@ -144,20 +125,17 @@ export async function fromCluster() {
   for (const [group, version, plural] of crds) {
     try {
       const resp = await api.listClusterCustomObject({ group, version, plural });
-      const body = resp?.body ?? resp; // compat selon version du client
+      const body = resp?.body ?? resp; 
       for (const item of body.items || []) {
         findings.push(...dispatch(plural, item));
       }
     } catch {
-      // CRD peut être absente selon l'installation — on ignore.
+      
     }
   }
   return findings;
 }
 
-// --------------------------------------------------------------------------- //
-// Résumé pour la couche IA
-// --------------------------------------------------------------------------- //
 export function summarize(findings, top = 25) {
   const ranked = [...findings].sort(
     (a, b) => severityRank(a.severity) - severityRank(b.severity),

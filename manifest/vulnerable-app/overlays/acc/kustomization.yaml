@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: acc-vulnerable
+
+resources:
+  - ../../base
+  - namespace.yaml
+
+commonLabels:
+  env: acc
+
+patches:
+  - target:
+      kind: ClusterRoleBinding
+      name: dvwa-cluster-admin
+    patch: |
+      - op: replace
+        path: /metadata/name
+        value: dvwa-cluster-admin-acc
+
+# Pour épingler les pods sur un nœud dédié, labellisez le nœud puis décommentez :
+# patches:
+#   - target:
+#       kind: Deployment
+#       name: vulnerable-web
+#     patch: |
+#       - op: add
+#         path: /spec/template/spec/nodeSelector
+#         value:
+#           kubernetes.io/env: acc

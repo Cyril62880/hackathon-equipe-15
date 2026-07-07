@@ -1,10 +1,3 @@
-// Client OVHcloud AI Endpoints (compatible API OpenAI).
-//
-// OVH AI Endpoints expose des modèles open-weight (Llama, Mistral, ...) via une
-// API compatible OpenAI. On réutilise donc le SDK `openai` en changeant seulement
-// baseURL et la clé d'API.
-//
-// Docs : https://www.ovhcloud.com/fr/public-cloud/ai-endpoints/
 
 import OpenAI from 'openai';
 
@@ -64,7 +57,6 @@ export class OvhAiClient {
   }
 }
 
-// Retire un éventuel bloc ```yaml ... ``` renvoyé par le modèle.
 export function stripCodeFence(text) {
   const trimmed = text.trim();
   const match = trimmed.match(/^```[a-zA-Z]*\n([\s\S]*)\n```$/);

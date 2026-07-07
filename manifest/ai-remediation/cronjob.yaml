@@ -29,17 +29,18 @@ spec:
               type: RuntimeDefault
           containers:
             - name: remediate
-              # ⚠️ Remplacer par l'image poussée : voir ../../ai-remediation/Dockerfile
-              image: REGISTRY_PLACEHOLDER/ai-remediation:latest
+              image: ghcr.io/cyril62880/ai-remediation:latest
               imagePullPolicy: Always
               args:
                 - "--from-cluster"
                 - "--target"
-                - "manifest/vulnerable-app/deployment.yaml"
+                - "manifest/vulnerable-app/base/deployment.yaml"
                 - "--repo"
                 - "Cyril62880/hackathon-equipe-15"
                 - "--base-branch"
                 - "main"
+                - "--focus"
+                - "vulnerable"
               envFrom:
                 - secretRef:
                     name: ai-remediation-secrets   # fourni par External Secrets Operator
