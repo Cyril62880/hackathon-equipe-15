@@ -19,6 +19,7 @@ spec:
         spec:
           serviceAccountName: ai-remediation
           restartPolicy: Never
+          automountServiceAccountToken: false
           securityContext:
             runAsNonRoot: true
             runAsUser: 10001
@@ -28,8 +29,8 @@ spec:
               type: RuntimeDefault
           containers:
             - name: remediate
-              image: ghcr.io/cyril62880/ai-remediation:5f62080
-              imagePullPolicy: Always
+              image: myregistry.example.com/ai-remediation:1.0.0
+              imagePullPolicy: IfNotPresent
               args:
                 - "--from-cluster"
                 - "--target"
@@ -48,11 +49,13 @@ spec:
                 - "main"
               envFrom:
                 - secretRef:
-                    name: ai-remediation-secrets  
+                    name: ai-remediation-secrets
               securityContext:
                 allowPrivilegeEscalation: false
                 readOnlyRootFilesystem: true
                 runAsNonRoot: true
+                runAsUser: 10001
+                runAsGroup: 10001
                 capabilities:
                   drop: ["ALL"]
               resources:
