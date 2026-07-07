@@ -18,6 +18,7 @@ spec:
             app: ai-remediation
         spec:
           serviceAccountName: ai-remediation
+          automountServiceAccountToken: false
           restartPolicy: Never
           securityContext:
             runAsNonRoot: true
@@ -28,8 +29,8 @@ spec:
               type: RuntimeDefault
           containers:
             - name: remediate
-              image: ghcr.io/cyril62880/ai-remediation:5f62080
-              imagePullPolicy: Always
+              image: myregistry.azurecr.io/ai-remediation@sha256:abcdef1234567890abcdef1234567890abcdef1234567890abcdef1234567890
+              imagePullPolicy: IfNotPresent
               args:
                 - "--from-cluster"
                 - "--target"
@@ -48,7 +49,7 @@ spec:
                 - "main"
               envFrom:
                 - secretRef:
-                    name: ai-remediation-secrets  
+                    name: ai-remediation-secrets
               securityContext:
                 allowPrivilegeEscalation: false
                 readOnlyRootFilesystem: true
