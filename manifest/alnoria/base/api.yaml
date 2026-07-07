@@ -52,21 +52,26 @@ spec:
                 configMapKeyRef:
                   name: alnoria-config
                   key: SPRING_PROFILES_ACTIVE
-            - name: SPRING_DATASOURCE_URL
+            - name: DB_URL
               valueFrom:
                 configMapKeyRef:
                   name: alnoria-config
-                  key: SPRING_DATASOURCE_URL
-            - name: SPRING_DATASOURCE_USERNAME
+                  key: DB_URL
+            - name: DB_USER
               valueFrom:
                 secretKeyRef:
                   name: alnoria-db-secret
-                  key: SPRING_DATASOURCE_USERNAME
-            - name: SPRING_DATASOURCE_PASSWORD
+                  key: DB_USER
+            - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: alnoria-db-secret
-                  key: SPRING_DATASOURCE_PASSWORD
+                  key: DB_PASSWORD
+            - name: CORS_ALLOWED_ORIGIN_PATTERNS
+              valueFrom:
+                configMapKeyRef:
+                  name: alnoria-config
+                  key: CORS_ALLOWED_ORIGIN_PATTERNS
           readinessProbe:
             tcpSocket:
               port: http
