@@ -40,13 +40,23 @@ spec:
           imagePullPolicy: Always
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 3000
           env:
             - name: API_INTERNAL_URL
               valueFrom:
                 configMapKeyRef:
                   name: alnoria-config
                   key: API_INTERNAL_URL
+            - name: AUTH_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: alnoria-config
+                  key: AUTH_API_URL
+            - name: API_PROXY_TARGET
+              valueFrom:
+                configMapKeyRef:
+                  name: alnoria-config
+                  key: API_PROXY_TARGET
             - name: API_PUBLIC_URL
               valueFrom:
                 configMapKeyRef:
