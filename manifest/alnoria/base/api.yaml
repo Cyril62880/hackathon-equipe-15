@@ -51,9 +51,10 @@ spec:
         app.kubernetes.io/name: alnoria
         app.kubernetes.io/component: api
     spec:
+      automountServiceAccountToken: false
       containers:
         - name: api
-          image: kasperski777/alnoria-api:latest
+          image: myregistry.azurecr.io/alnoria-api:1.0.0
           imagePullPolicy: Always
           ports:
             - name: http
@@ -113,3 +114,8 @@ spec:
             capabilities:
               drop:
                 - ALL
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+            seccompProfile:
+              type: RuntimeDefault
